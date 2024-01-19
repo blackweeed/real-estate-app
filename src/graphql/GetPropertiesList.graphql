@@ -1,0 +1,27 @@
+query GetPropertiesList {
+  properties(first: 6) {
+    nodes {
+      slug
+      propertieFields {
+        map {
+          city
+          streetName
+          streetNumber
+          postCode
+          country
+          state
+        }
+        area
+        price
+        numberOfRooms
+        numberOfBeds
+        buyOrLease
+        images {
+          nodes {
+            mediaItemUrl
+          }
+        }
+      }
+    }
+  }
+}

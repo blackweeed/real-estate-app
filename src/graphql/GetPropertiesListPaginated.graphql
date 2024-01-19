@@ -1,0 +1,27 @@
+query GetPropertiesListPaginated {
+  properties {
+    nodes {
+      slug
+      propertieFields {
+        map {
+          city
+          streetName
+          streetNumber
+          postCode
+          country
+          state
+        }
+        area
+        price
+        numberOfRooms
+        numberOfBeds
+        buyOrLease
+        images {
+          nodes {
+            mediaItemUrl
+          }
+        }
+      }
+    }
+  }
+}
