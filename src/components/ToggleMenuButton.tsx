@@ -3,7 +3,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 
 import { AlignRight } from "lucide-react";
-import React, { useState } from "react";
+import { useState } from "react";
 import { Menu } from "./Menu";
 
 export const ToggleMenuButton = () => {
@@ -12,9 +12,9 @@ export const ToggleMenuButton = () => {
     <>
       <button
         onClick={() => setToggle(true)}
-        className="px-4 py-2 bg-white  rounded-full inline-flex gap-2 justify-between items-center border-2 "
+        className="px-2 lg:px-4 py-2 bg-white  rounded-full inline-flex gap-2 justify-between items-center border-2 "
       >
-        Menu
+        <p className="hidden lg:block">Menu</p>
         <AlignRight size={20} strokeWidth={2.4} />
       </button>
       {toggle && (

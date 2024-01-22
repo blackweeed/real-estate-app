@@ -1,8 +1,8 @@
-import { getSingleAgentBySlug } from "@/api/agents";
 import Image from "next/image";
 import Link from "next/link";
+import { getSingleAgentBySlug } from "@/api/agents";
 
-export const Agent = async ({ slug }) => {
+export const Agent = async ({ slug }:{slug:string}) => {
   const agent = await getSingleAgentBySlug(slug);
   return (
     <Link

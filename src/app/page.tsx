@@ -6,17 +6,17 @@ import { GetInTouch } from "@/components/GetInTouch";
 export default async function Home() {
   return (
     <main>
-      <div className="w-full h-[84vh] relative">
+      <div className="w-full h-[80vh] relative">
         <div className="absolute z-30 inset-0 flex flex-col gap-4 justify-center items-center ">
           <h1
             style={{ textShadow: "2px 2px 4px rgba(0, 0, 0, 0.6)" }}
-            className="text-5xl text-white font-bold tracking-wide "
+            className="text-3xl lg:text-5xl text-white font-bold tracking-wide text-center"
           >
             Znajdź swój wymarzony dom.
           </h1>
           <h2
             style={{ textShadow: "2px 2px 4px rgba(0, 0, 0, 0.6)" }}
-            className="text-2xl text-white font-bold tracking-wide"
+            className="text-xl lg:text-2xl text-white font-bold tracking-wide"
           >
             Z nami to proste!
           </h2>
@@ -38,7 +38,9 @@ export default async function Home() {
         />
       </div>
       <FeaturedProperties />
-      <GetInTouch />
+      <div className="px-6">
+        <GetInTouch />
+      </div>
     </main>
   );
 }

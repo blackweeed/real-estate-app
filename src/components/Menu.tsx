@@ -1,6 +1,6 @@
 import React from "react";
-import { Logo } from "./Logo";
 import { ChevronRight, Phone, Search, UnlockKeyhole, X } from "lucide-react";
+import { Logo } from "./Logo";
 import { Links } from "./Links";
 import { SmallLinks } from "./SmallLinks";
 
@@ -10,16 +10,16 @@ type MenuProps = {
 
 export const Menu = ({ setToggle }: MenuProps) => {
   return (
-    <div className="w-[94%] h-[94%] p-10 bg-white rounded-3xl overflow-hidden">
+    <div className="w-[94%] h-[90%] lg:h-[94%] p-10 bg-white rounded-3xl   z-50">
       <nav className="flex justify-between">
         <Logo />
         <div className="flex items-center gap-5">
-          <button className="py-2.5 w-56 flex px-6 items-center text-blue-600 bg-white rounded-full font-semibold border-[1.7px]">
+          <button className="py-2.5 w-56 hidden lg:flex px-6 items-center text-blue-600 bg-white rounded-full font-semibold border-[1.7px]">
             <span className="w-36">1-887-SERHANT </span>{" "}
             <Phone size={21} strokeWidth={2.5} />
           </button>
-          <button className="py-2.5 w-56 flex px-6 items-center bg-blue-600 text-white rounded-full font-semibold">
-            <span className="w-36">Find a house</span>{" "}
+          <button className="py-2.5 lg:w-56 flex px-2.5 lg:px-6 items-center bg-blue-600 text-white rounded-full font-semibold">
+            <span className="hidden lg:block w-36">Find a house</span>{" "}
             <Search size={21} strokeWidth={2.5} />
           </button>
           <button
@@ -31,7 +31,7 @@ export const Menu = ({ setToggle }: MenuProps) => {
         </div>
       </nav>
       <div className="flex flex-col gap-4 mt-8 justify-around">
-        <div className="flex justify-around">
+        <div className="block lg:flex  justify-around overflow-y-scroll">
           <Links />
           <SmallLinks />
         </div>

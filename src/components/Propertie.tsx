@@ -1,13 +1,11 @@
-import { getSinglePropertieBySlug } from "@/api/properties";
-import { formatPrice } from "@/app/utils";
 import { Dot } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { formatPrice } from "@/app/utils";
+import { getSinglePropertieBySlug } from "@/api/properties";
 
 export const Propertie = async ({ slug }: { slug: string }) => {
   const propertie = await getSinglePropertieBySlug(slug);
-
-  console.log(propertie?.propertieFields?.price);
 
   return (
     <Link

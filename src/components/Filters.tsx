@@ -29,7 +29,7 @@ export const Filters = () => {
     <>
       <button
         onClick={() => setToggle((prev) => !prev)}
-        className="inline-flex gap-4 items-center font-semibold border rounded-full px-7 py-3 hover:text-blue-600 hover:border-black/50 transition duration-500 "
+        className="flex place-self-start lg:place-self-center gap-4 items-center font-semibold border rounded-full px-7 py-3 hover:text-blue-600 hover:border-black/50 transition duration-500 "
       >
         Filtry
         <SlidersHorizontal size={18} strokeWidth={2.75} />
@@ -40,7 +40,7 @@ export const Filters = () => {
           toggle ? "fixed" : "hidden"
         }  top-0 left-0 w-full h-full bg-black/40 z-40 flex justify-end`}
       >
-        <div className="bg-white h-full w-[700px] z-50">
+        <div className="bg-white h-full w-[700px] ">
           <div className="">
             <div className="flex inset-0 justify-between items-center bg-slate-50 p-10">
               <h2 className="text-3xl text-blue-600 font-semibold">Filtry</h2>

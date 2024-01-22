@@ -3,7 +3,7 @@ import Link from "next/link";
 export const SmallLinks = () => {
   return (
     <>
-      <div>
+      <div className="mt-8 lg:mt-0">
         <h4 className="font-semibold text-gray-500 mb-6">MARKETING & REACH</h4>
         <ul className="flex flex-col gap-3">
           <Link className="text-blue-600 font-semibold" href={``}>
@@ -18,7 +18,9 @@ export const SmallLinks = () => {
         </ul>
       </div>
       <div>
-        <h4 className="font-semibold text-gray-500 mb-6">COMPANY</h4>
+        <h4 className="font-semibold text-gray-500 mt-6 lg:mt-0 mb-6">
+          COMPANY
+        </h4>
         <ul className="flex flex-col gap-3">
           <Link className="text-blue-600 font-semibold" href={``}>
             About
@@ -35,7 +37,9 @@ export const SmallLinks = () => {
         </ul>
       </div>
       <div>
-        <h4 className="font-semibold text-gray-500 mb-6">INSIGHTS</h4>
+        <h4 className="font-semibold text-gray-500 mt-6 lg:mt-0 mb-6">
+          INSIGHTS
+        </h4>
         <ul className="flex flex-col gap-3">
           <Link className="text-blue-600 font-semibold" href={``}>
             Blog

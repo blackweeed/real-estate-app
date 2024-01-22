@@ -29,7 +29,7 @@ export const ImageGallery = ({ image, images, index, buyOrLease }) => {
 
   return (
     <>
-      <div key={image.mediaItemUrl} className="w-full h-full relative">
+      <div key={image.mediaItemUrl} className="w-full h-full relative ">
         {index === 0 && (
           <div className="z-30 bg-white/60 w-24 h-8 absolute top-3 left-3 flex justify-center items-center rounded-md text-blue-600 font-semibold uppercase">
             {buyOrLease}

@@ -1,36 +1,30 @@
 "use client";
 
-import { useLoadScript, GoogleMap, Marker } from "@react-google-maps/api";
+import { useLoadScript, GoogleMap, Marker, type Libraries  } from "@react-google-maps/api";
 import type { NextPage } from "next";
 import { useMemo } from "react";
 
-const GoogleMaps: NextPage = ({ longitude, latitude }: any) => {
-  const libraries = useMemo(() => ["places"], []);
-  const mapCenter = useMemo(() => ({ lat: latitude, lng: longitude }), []);
+type GoogleMapsProps = {
+  longitude: number,
+  latitude: number
+}
 
-  const locations = [
-    {
-      name: "Marker 1",
-      location: {
-        lat: 37.7749,
-        lng: -122.4194,
-      },
-    },
-    // Możesz dodać więcej lokalizacji, jeśli chcesz pokazać więcej pinezek
-  ];
+export const GoogleMaps: NextPage<GoogleMapsProps> = ({ longitude, latitude }) => {
+  const libraries: Libraries = useMemo(() => ["places"], []);
+  const mapCenter = useMemo(() => ({ lat: latitude, lng: longitude }), [latitude, longitude]);
 
   const mapOptions = useMemo<google.maps.MapOptions>(
     () => ({
       disableDefaultUI: true,
       clickableIcons: true,
-      scrollwheel: false,
+      scrollwheel: true,
     }),
     []
   );
 
   const { isLoaded } = useLoadScript({
     googleMapsApiKey: "AIzaSyA5Abai4kFDx1P1ZvK5EQg9d24cCqVXOT0" as string,
-    libraries: libraries as any,
+    libraries: libraries,
   });
 
   if (!isLoaded) {
@@ -55,4 +49,3 @@ const GoogleMaps: NextPage = ({ longitude, latitude }: any) => {
   );
 };
 
-export default GoogleMaps;

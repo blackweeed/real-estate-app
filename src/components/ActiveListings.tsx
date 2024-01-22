@@ -1,3 +1,4 @@
+import { GetInTouch } from "./GetInTouch";
 import { Propertie } from "./Propertie";
 
 export const ActiveListings = async ({ data }) => {
@@ -10,11 +11,12 @@ export const ActiveListings = async ({ data }) => {
         nieruchomości na rynku.
       </p>
 
-      <div className="grid grid-cols-3 gap-10">
+      <div className="grid grid-cols-1  lg:grid-cols-3 gap-12 mb-8">
         {data.map((slug) => {
           return <Propertie key={slug.slug} slug={slug.slug} />;
         })}
       </div>
+      <GetInTouch />
     </section>
   );
 };

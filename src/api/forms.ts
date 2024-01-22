@@ -1,5 +1,5 @@
-import { SubmitFormDocument } from "@/gql/graphql";
 import { executeGraphql } from "./graphqlApi";
+import { SubmitFormDocument } from "@/gql/graphql";
 
 export async function SubmitContactForm(
   first_name: string,

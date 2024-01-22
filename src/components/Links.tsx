@@ -6,8 +6,7 @@ export const Links = () => {
     { label: "wynajmij", link: "/rent" },
     { label: "sprzedaj", link: "/sell" },
     { label: "agenci", link: "/agents" },
-    { label: "contact us", link: "/contact" },
-    { label: "agenci", link: "/agents" },
+    { label: "kontakt", link: "/contact" },
   ];
 
   return (
@@ -18,7 +17,7 @@ export const Links = () => {
             <Link
               key={link.label}
               href={`${link.link}`}
-              className="capitalize text-3xl font-bold text-blue-600 hover:underline hover:decoration-wavy transition-all duration-500"
+              className="capitalize text-2xl lg:text-3xl font-bold text-blue-600 hover:underline hover:decoration-wavy transition-all duration-500"
             >
               {link.label}
             </Link>

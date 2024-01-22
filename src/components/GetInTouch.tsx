@@ -1,9 +1,9 @@
 "use client";
 
-import { submitForm } from "@/app/actions";
 import { useState } from "react";
 import { useFormState } from "react-dom";
 import { SubmitButton } from "./SubmmitButton";
+import { submitForm } from "@/app/actions";
 
 const initialState = {
   message: "",
@@ -17,16 +17,14 @@ export const GetInTouch = () => {
     dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 
     dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500`;
 
-  console.log(state);
-
   return (
-    <div className="flex justify-around mb-6">
-      <div className="flex gap-2 items-center mb-40 justify-center max-w-[550px]">
+    <div className="flex flex-col lg:flex-row items-center justify-around mb-6">
+      <div className="flex gap-2 items-center mb-8 lg:mb-40 justify-center max-w-[550px]">
         <div>
-          <h3 className="text-blue-600 text-5xl font-bold mb-3">
+          <h3 className="text-blue-600 text-4xl lg:text-5xl font-bold mb-3">
             Skontaktuj się z nami!
           </h3>
-          <p>
+          <p className="text-sm lg:text-base">
             Masz pytania? Skontaktuj się z nami! Nasi doświadczeni agenci stoją
             do Twojej dyspozycji. Zapraszamy do wypełnienia formularza
           </p>
@@ -36,7 +34,7 @@ export const GetInTouch = () => {
         <form
           onSubmit={() => setMessagePopup(true)}
           action={formAction}
-          className="flex flex-col w-[400px] h-[560px] bg-gray-100 border justify-center items-center gap-6 rounded-md px-8 py-4"
+          className="flex flex-col w-full lg:w-[400px] h-[560px] bg-gray-100 border justify-center items-center gap-6 rounded-md px-12 py-4"
         >
           <input
             type="text"

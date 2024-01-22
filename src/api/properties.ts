@@ -1,8 +1,8 @@
+import { executeGraphql } from "./graphqlApi";
 import {
   GetPropertiesListDocument,
   PropertieGetbySlugDocument,
 } from "@/gql/graphql";
-import { executeGraphql } from "./graphqlApi";
 
 export const getPropertiesList = async () => {
   const graphqlResponse = await executeGraphql({

@@ -1,5 +1,5 @@
-import { AgentGetBySlugDocument, GetAgentsListDocument } from "@/gql/graphql";
 import { executeGraphql } from "./graphqlApi";
+import { AgentGetBySlugDocument, GetAgentsListDocument } from "@/gql/graphql";
 
 export const getAgentsList = async () => {
   const graphqlResponse = await executeGraphql({
