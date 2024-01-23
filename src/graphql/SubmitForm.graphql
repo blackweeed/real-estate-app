@@ -1,25 +1,25 @@
 mutation SubmitForm(
-  $FirstName: String!
-  $SecondName: String!
-  $PhoneNumber: String!
-  $Comments: String!
+	$FirstName: String!
+	$SecondName: String!
+	$PhoneNumber: String!
+	$Comments: String!
 ) {
-  submitGfForm(
-    input: {
-      id: 1
-      fieldValues: [
-        { id: 1, nameValues: { first: $FirstName, last: $SecondName } }
-        { id: 4, value: $PhoneNumber }
-        { id: 3, value: $Comments }
-      ]
-    }
-  ) {
-    errors {
-      message
-      id
-    }
-    confirmation {
-      message
-    }
-  }
+	submitGfForm(
+		input: {
+			id: 1
+			fieldValues: [
+				{ id: 1, nameValues: { first: $FirstName, last: $SecondName } }
+				{ id: 4, value: $PhoneNumber }
+				{ id: 3, value: $Comments }
+			]
+		}
+	) {
+		errors {
+			message
+			id
+		}
+		confirmation {
+			message
+		}
+	}
 }

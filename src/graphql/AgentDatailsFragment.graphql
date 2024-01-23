@@ -1,18 +1,18 @@
 fragment AgentDetails on WithAcfAgentFields {
-  agentFields {
-    email
-    phoneNumber
-    agentsLocation
-    agentsDescription
-    avatar {
-      node {
-        mediaItemUrl
-      }
-    }
-    relationWithProperties {
-      nodes {
-        slug
-      }
-    }
-  }
+	agentFields {
+		email
+		phoneNumber
+		agentsLocation
+		agentsDescription
+		avatar {
+			node {
+				mediaItemUrl
+			}
+		}
+		relationWithProperties {
+			nodes {
+				slug
+			}
+		}
+	}
 }

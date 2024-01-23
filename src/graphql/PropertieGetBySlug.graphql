@@ -1,8 +1,8 @@
 query PropertieGetbySlug($ProperiteID: ID!) {
-  propertie(id: $ProperiteID, idType: SLUG) {
-    modified
-    date
-    title
-    ...PropertieDetails
-  }
+	propertie(id: $ProperiteID, idType: SLUG) {
+		modified
+		date
+		title
+		...PropertieDetails
+	}
 }

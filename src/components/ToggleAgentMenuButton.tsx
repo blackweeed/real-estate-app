@@ -4,19 +4,17 @@ import { useState } from "react";
 import { UserLoginMenu } from "./UserLoginMenu";
 
 export const ToggleAgentMenuButton = () => {
-  const [toogleUserMenu, setToggleUserMenu] = useState(false);
+	const [toogleUserMenu, setToggleUserMenu] = useState(false);
 
-  return (
-    <>
-      <button
-        onClick={() => setToggleUserMenu(true)}
-        className="hidden lg:block p-2 border-2 rounded-full"
-      >
-        <User size={20} />
-      </button>
-      {toogleUserMenu && (
-        <UserLoginMenu setToggleUserMenu={setToggleUserMenu} />
-      )}
-    </>
-  );
+	return (
+		<>
+			<button
+				onClick={() => setToggleUserMenu(true)}
+				className="hidden rounded-full border-2 p-2 lg:block"
+			>
+				<User size={20} />
+			</button>
+			{toogleUserMenu && <UserLoginMenu setToggleUserMenu={setToggleUserMenu} />}
+		</>
+	);
 };

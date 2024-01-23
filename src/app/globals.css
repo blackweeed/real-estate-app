@@ -3,9 +3,45 @@
 @tailwind utilities;
 
 .label input[type="radio"] {
-  display: none;
+	display: none;
 }
 .label input[type="radio"]:checked ~ div {
-  background: rgb(229 231 235);
-  border: 1px solid rgb(229 231 235);
+	background: rgb(229 231 235);
+	border: 1px solid rgb(229 231 235);
+}
+
+.photoGallery {
+	width: 100%;
+	display: grid;
+	grid-gap: 1rem;
+	grid-template-areas:
+		"photoOne photoTwo photoThree"
+		"photoOne photoFour PhotoFive";
+	grid-template-columns: 1fr 20% 20%;
+}
+
+.ESSA:first-child {
+	grid-area: photoOne;
+	height: 500px;
+}
+
+@media (max-width: 800px) {
+	.photoGallery {
+		width: 100%;
+		display: grid;
+		grid-gap: 0.6rem;
+		grid-template-areas:
+			"photoOne photoOne photoOne photoOne"
+			"photoTwo photoThree PhotoFour photoFive";
+		grid-template-columns: 1fr 1fr 1fr 1fr;
+	}
+
+	.ESSA:first-child {
+		grid-area: photoOne;
+		height: 270px;
+	}
+	.ESSA:nth-child(2) {
+		grid-area: photoTwo;
+		height: 100px;
+	}
 }

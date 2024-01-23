@@ -1,60 +1,56 @@
 import Link from "next/link";
 
 export const SmallLinks = () => {
-  return (
-    <>
-      <div className="mt-8 lg:mt-0">
-        <h4 className="font-semibold text-gray-500 mb-6">MARKETING & REACH</h4>
-        <ul className="flex flex-col gap-3">
-          <Link className="text-blue-600 font-semibold" href={``}>
-            SERHANT. Studios
-          </Link>
-          <Link className="text-blue-600 font-semibold" href={``}>
-            SERHANT. ADX
-          </Link>
-          <Link className="text-blue-600 font-semibold" href={``}>
-            SERHANT. ID Lab
-          </Link>
-        </ul>
-      </div>
-      <div>
-        <h4 className="font-semibold text-gray-500 mt-6 lg:mt-0 mb-6">
-          COMPANY
-        </h4>
-        <ul className="flex flex-col gap-3">
-          <Link className="text-blue-600 font-semibold" href={``}>
-            About
-          </Link>
-          <Link className="text-blue-600 font-semibold" href={``}>
-            Referrals
-          </Link>
-          <Link className="text-blue-600 font-semibold" href={``}>
-            Carrers
-          </Link>
-          <Link className="text-blue-600 font-semibold" href={``}>
-            Anual letter
-          </Link>
-        </ul>
-      </div>
-      <div>
-        <h4 className="font-semibold text-gray-500 mt-6 lg:mt-0 mb-6">
-          INSIGHTS
-        </h4>
-        <ul className="flex flex-col gap-3">
-          <Link className="text-blue-600 font-semibold" href={``}>
-            Blog
-          </Link>
-          <Link className="text-blue-600 font-semibold" href={``}>
-            Books
-          </Link>
-          <Link className="text-blue-600 font-semibold" href={``}>
-            Guide
-          </Link>
-          <Link className="text-blue-600 font-semibold" href={``}>
-            Courses
-          </Link>
-        </ul>
-      </div>
-    </>
-  );
+	return (
+		<>
+			<div className="mt-8 lg:mt-0">
+				<h4 className="mb-6 font-semibold text-gray-500">MARKETING & REACH</h4>
+				<ul className="flex flex-col gap-3">
+					<Link className="font-semibold text-blue-600" href={``}>
+						SERHANT. Studios
+					</Link>
+					<Link className="font-semibold text-blue-600" href={``}>
+						SERHANT. ADX
+					</Link>
+					<Link className="font-semibold text-blue-600" href={``}>
+						SERHANT. ID Lab
+					</Link>
+				</ul>
+			</div>
+			<div>
+				<h4 className="mb-6 mt-6 font-semibold text-gray-500 lg:mt-0">COMPANY</h4>
+				<ul className="flex flex-col gap-3">
+					<Link className="font-semibold text-blue-600" href={``}>
+						About
+					</Link>
+					<Link className="font-semibold text-blue-600" href={``}>
+						Referrals
+					</Link>
+					<Link className="font-semibold text-blue-600" href={``}>
+						Carrers
+					</Link>
+					<Link className="font-semibold text-blue-600" href={``}>
+						Anual letter
+					</Link>
+				</ul>
+			</div>
+			<div>
+				<h4 className="mb-6 mt-6 font-semibold text-gray-500 lg:mt-0">INSIGHTS</h4>
+				<ul className="flex flex-col gap-3">
+					<Link className="font-semibold text-blue-600" href={``}>
+						Blog
+					</Link>
+					<Link className="font-semibold text-blue-600" href={``}>
+						Books
+					</Link>
+					<Link className="font-semibold text-blue-600" href={``}>
+						Guide
+					</Link>
+					<Link className="font-semibold text-blue-600" href={``}>
+						Courses
+					</Link>
+				</ul>
+			</div>
+		</>
+	);
 };

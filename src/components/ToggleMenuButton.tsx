@@ -7,29 +7,29 @@ import { useState } from "react";
 import { Menu } from "./Menu";
 
 export const ToggleMenuButton = () => {
-  const [toggle, setToggle] = useState(false);
-  return (
-    <>
-      <button
-        onClick={() => setToggle(true)}
-        className="px-2 lg:px-4 py-2 bg-white  rounded-full inline-flex gap-2 justify-between items-center border-2 "
-      >
-        <p className="hidden lg:block">Menu</p>
-        <AlignRight size={20} strokeWidth={2.4} />
-      </button>
-      {toggle && (
-        <AnimatePresence>
-          <motion.div
-            initial={{ height: 0 }}
-            animate={{ height: "100vh" }}
-            exit={{ height: 0 }}
-            transition={{ duration: 0.3 }}
-            className="w-full h-screen top-0 left-0 right-0 fixed z-50 flex justify-center items-center bg-blue-600 bg-transparent/40"
-          >
-            <Menu setToggle={setToggle} />
-          </motion.div>
-        </AnimatePresence>
-      )}
-    </>
-  );
+	const [toggle, setToggle] = useState(false);
+	return (
+		<>
+			<button
+				onClick={() => setToggle(true)}
+				className="inline-flex items-center justify-between gap-2  rounded-full border-2 bg-white px-2 py-2 lg:px-4 "
+			>
+				<p className="hidden lg:block">Menu</p>
+				<AlignRight size={20} strokeWidth={2.4} />
+			</button>
+			{toggle && (
+				<AnimatePresence>
+					<motion.div
+						initial={{ height: 0 }}
+						animate={{ height: "100vh" }}
+						exit={{ height: 0 }}
+						transition={{ duration: 0.3 }}
+						className="fixed left-0 right-0 top-0 z-50 flex h-screen w-full items-center justify-center bg-blue-600 bg-transparent/40"
+					>
+						<Menu setToggle={setToggle} />
+					</motion.div>
+				</AnimatePresence>
+			)}
+		</>
+	);
 };

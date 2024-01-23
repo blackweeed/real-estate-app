@@ -1,38 +1,41 @@
 import Image from "next/image";
 import Link from "next/link";
+import { type Metadata } from "next";
 import { getAgentsList } from "@/api/agents";
 
-export default async function AgentsPage() {
-  const agents = await getAgentsList();
+export const metadata: Metadata = {
+	title: "Poznaj naszych agentów",
+	description: "Znajdź idealną nieruchomość dla siebie z naszą pomocą.",
+	keywords: "nieruchomość, kupno nieruchomości, mieszkanie, dom, agenci nieruchomości",
+};
 
-  return (
-    <main className="mt-32 px-6 lg:px-20">
-      <h1 className="text-center text-4xl font-semibold text-blue-600 mb-6">
-        Nasi Agenci
-      </h1>
-      <div className="grid gird-cols-1 lg:grid-cols-4 gap-6">
-        {agents?.map((agent) => {
-          return (
-            <div key={agent.slug} className="rounded-lg overflow-hidden">
-              <Link href={`/agents/${agent.slug}`}>
-                <div className="w-full h-[400px] relative">
-                  <Image
-                    src={agent.featuredImage?.node.mediaItemUrl ?? ""}
-                    alt=""
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-              </Link>
-              <h2 className="font-semibold text-2xl text-blue-600 my-1">
-                {agent.title}
-              </h2>
-              <p>{agent.agentFields?.phoneNumber}</p>
-              <p>{agent.agentFields?.email}</p>
-            </div>
-          );
-        })}
-      </div>
-    </main>
-  );
+export default async function AgentsPage() {
+	const agents = await getAgentsList();
+
+	return (
+		<main className="mt-32 px-6 lg:px-20">
+			<h1 className="mb-6 text-center text-4xl font-semibold text-blue-600">Nasi Agenci</h1>
+			<div className="gird-cols-1 grid gap-6 lg:grid-cols-4">
+				{agents?.map((agent) => {
+					return (
+						<div key={agent.slug} className="overflow-hidden rounded-lg">
+							<Link href={`/agents/${agent.slug}`}>
+								<div className="relative h-[400px] w-full">
+									<Image
+										src={agent.featuredImage?.node.mediaItemUrl ?? ""}
+										alt=""
+										fill
+										className="object-cover"
+									/>
+								</div>
+							</Link>
+							<h2 className="my-1 text-2xl font-semibold text-blue-600">{agent.title}</h2>
+							<p>{agent.agentFields?.phoneNumber}</p>
+							<p>{agent.agentFields?.email}</p>
+						</div>
+					);
+				})}
+			</div>
+		</main>
+	);
 }

@@ -1,18 +1,18 @@
 query GetAgentsList {
-  agents {
-    nodes {
-      date
-      title
-      slug
-      featuredImage {
-        node {
-          mediaItemUrl
-        }
-      }
-      agentFields {
-        email
-        phoneNumber
-      }
-    }
-  }
+	agents {
+		nodes {
+			date
+			title
+			slug
+			featuredImage {
+				node {
+					mediaItemUrl
+				}
+			}
+			agentFields {
+				email
+				phoneNumber
+			}
+		}
+	}
 }
