@@ -8,26 +8,14 @@ import { ToggleMenuButton } from "./ToggleMenuButton";
 import { ToggleAgentMenuButton } from "./ToggleAgentMenuButton";
 
 export const Navbar = () => {
-	const [prevScrollPos, setPrevScrollPos] = useState(window.scrollY);
+	const [prevScrollPos, setPrevScrollPos] = useState(0);
 	const [visible, setVisible] = useState(true);
 
 	const links = [
-		{
-			href: "/buy",
-			name: "Kup",
-		},
-		{
-			href: "/rent",
-			name: "Wynajmij",
-		},
-		{
-			href: "/sell",
-			name: "Sprzedaj",
-		},
-		{
-			href: "/agents",
-			name: "Agenci",
-		},
+		{ href: "/buy", name: "Kup" },
+		{ href: "/rent", name: "Wynajmij" },
+		{ href: "/sell", name: "Sprzedaj" },
+		{ href: "/agents", name: "Agenci" },
 	];
 
 	useEffect(() => {
@@ -36,26 +24,16 @@ export const Navbar = () => {
 			const scrollingUp = prevScrollPos > currentScrollPos;
 
 			setPrevScrollPos(currentScrollPos);
-
-			if (scrollingUp) {
-				setVisible(true);
-			} else {
-				setVisible(false);
-			}
+			setVisible(scrollingUp);
 		};
 
 		window.addEventListener("scroll", handleScroll);
-
-		return () => {
-			window.removeEventListener("scroll", handleScroll);
-		};
+		return () => window.removeEventListener("scroll", handleScroll);
 	}, [prevScrollPos]);
 
 	return (
 		<nav
-			className={`${
-				!visible && "hidden"
-			} fixed left-0 right-0 top-0 z-40 mx-auto mt-4 w-[90%] rounded-full bg-white px-4 py-4 shadow-lg lg:px-20 `}
+			className={`${!visible && "hidden"} fixed left-0 right-0 top-0 z-40 mx-auto mt-4 w-[90%] rounded-full bg-white px-4 py-4 shadow-lg lg:px-20 `}
 		>
 			<div className="flex items-center justify-between">
 				<Logo />

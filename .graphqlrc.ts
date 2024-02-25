@@ -1,7 +1,8 @@
 import type { CodegenConfig } from "@graphql-codegen/cli";
 
 const config: CodegenConfig = {
-	schema: "http://real-estate.local/graphql",
+	schema: "https://test123.cytr.us/index.php?graphql",
+	// schema: "http://real-estate.local/graphql",
 	overwrite: true,
 	ignoreNoDocuments: true,
 	documents: "src/graphql/*.graphql",

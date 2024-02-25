@@ -30,8 +30,8 @@ export default async function AgentsPage() {
 								</div>
 							</Link>
 							<h2 className="my-1 text-2xl font-semibold text-blue-600">{agent.title}</h2>
-							<p>{agent.agentFields?.phoneNumber}</p>
-							<p>{agent.agentFields?.email}</p>
+							<p>{agent.agents?.phoneNumber}</p>
+							<p>{agent.agents?.email}</p>
 						</div>
 					);
 				})}

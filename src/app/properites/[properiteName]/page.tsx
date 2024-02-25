@@ -20,7 +20,7 @@ export async function generateMetadata({ params }: PropertiePageProps): Promise<
 
 	return {
 		title: propertie?.title,
-		description: propertie?.propertieFields?.propertyDescription,
+		description: propertie?.polaPropertie?.propertyDescription,
 	};
 }
 
@@ -43,47 +43,47 @@ export default async function ProperitePage({ params }: PropertiePageProps) {
 				</ul>
 			</nav>
 			<div className="photoGallery">
-				{propertie?.propertieFields?.images?.nodes.map((image, index) => {
+				{propertie?.polaPropertie?.images?.nodes.map((image, index) => {
 					return (
 						<ImageGallery
 							key={index}
 							image={image.mediaItemUrl}
-							images={propertie.propertieFields?.images?.nodes}
+							images={propertie.polaPropertie?.images?.nodes}
 							index={index}
-							buyOrLease={propertie.propertieFields?.buyOrLease}
+							buyOrLease={propertie.polaPropertie?.buyOrLease}
 						/>
 					);
 				})}
 			</div>
 			<div>
 				<h1 className="mt-4 text-3xl font-bold text-blue-600">
-					{propertie?.propertieFields?.map?.city}
+					{propertie?.polaPropertie?.map?.city}
 				</h1>
 				<p className="my-1 text-2xl font-semibold text-gray-500">
-					{formatPrice(propertie?.propertieFields?.price ?? 0)}
+					{formatPrice(propertie?.polaPropertie?.price ?? 0)}
 				</p>
 				<div className="inline-flex gap-6 text-lg font-medium text-gray-500">
-					<p>{propertie?.propertieFields?.numberOfRooms} Pokoje</p>
-					<p>Powierzchnia {propertie?.propertieFields?.area}m²</p>
+					<p>{propertie?.polaPropertie?.numberOfRooms} Pokoje</p>
+					<p>Powierzchnia {propertie?.polaPropertie?.area}m²</p>
 				</div>
 			</div>
 			<div className="flex flex-col lg:flex-row">
 				<div className="basis-3/4">
 					<PropertieDescription
-						propertieDescription={propertie?.propertieFields?.propertyDescription ?? ""}
+						propertieDescription={propertie?.polaPropertie?.propertyDescription ?? ""}
 					/>
 					<div className="mt-6 flex max-w-[900px] flex-col gap-2">
 						<h2 className="mb-2 text-4xl font-bold text-blue-600 lg:text-5xl">Podsumowanie</h2>
 						<div className="inline-flex gap-2 text-lg sm:text-xl">
 							<p className="min-w-[200px] font-semibold lg:min-w-[280px]">Lokalizacja</p>
 							<p className="text-base capitalize lg:text-xl">
-								{propertie?.propertieFields?.map?.streetAddress}
+								{propertie?.polaPropertie?.map?.streetAddress}
 							</p>
 						</div>
 						<div className="inline-flex gap-2 text-lg sm:text-xl">
 							<p className="min-w-[200px] font-semibold lg:min-w-[280px]">Typ nieruchomości</p>
 							<p className="text-base capitalize lg:text-xl">
-								{propertie?.propertieFields?.typeOfDevelopment}
+								{propertie?.polaPropertie?.typeOfDevelopment}
 							</p>
 						</div>
 						<div className="inline-flex gap-2 text-lg sm:text-xl">
@@ -99,15 +99,15 @@ export default async function ProperitePage({ params }: PropertiePageProps) {
 				<div className="mx-auto mt-5 basis-1/4 lg:mt-0">
 					<h3 className="text-center text-2xl font-semibold">Ekskluzywni agenci aukcji</h3>
 					<div>
-						{propertie?.propertieFields?.relationWithProperties?.nodes.map((item) => {
+						{propertie?.polaPropertie?.relationWithProperties?.nodes.map((item) => {
 							return <Agent key={item.slug} slug={item.slug ?? ""} />;
 						})}
 					</div>
 				</div>
 			</div>
 			<GoogleMaps
-				latitude={propertie?.propertieFields?.map?.latitude ?? 0}
-				longitude={propertie?.propertieFields?.map?.longitude ?? 0}
+				latitude={propertie?.polaPropertie?.map?.latitude ?? 0}
+				longitude={propertie?.polaPropertie?.map?.longitude ?? 0}
 			/>
 			<GetInTouch />
 		</main>

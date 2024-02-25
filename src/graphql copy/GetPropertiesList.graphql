@@ -1,5 +1,5 @@
 query GetPropertiesList {
-	properties(first: 1) {
+	properties(first: 6) {
 		nodes {
 			slug
 			propertieFields {

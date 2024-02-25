@@ -17,7 +17,7 @@ export async function generateMetadata({ params }: AgentPageProps): Promise<Meta
 
 	return {
 		title: agent?.title,
-		description: agent?.agentFields?.agentsDescription,
+		description: agent?.agents?.agentsDescription,
 	};
 }
 
@@ -44,7 +44,7 @@ export default async function SingleAgentPage({ params }: AgentPageProps) {
 					<div className="relative mb-6 h-[400px] overflow-hidden rounded-lg lg:mb-0 lg:h-[650px] lg:w-[500px]">
 						<Image
 							className="object-cover"
-							src={agent?.agentFields?.avatar?.node.mediaItemUrl ?? ""}
+							src={agent?.agents?.avatar?.node.mediaItemUrl ?? ""}
 							alt=""
 							fill
 						/>
@@ -54,22 +54,22 @@ export default async function SingleAgentPage({ params }: AgentPageProps) {
 					<h1 className="text-4xl font-semibold text-blue-600 lg:text-5xl">{agent?.title}</h1>
 					<div className="inline-flex items-center gap-1 py-3 text-2xl font-medium">
 						<MapPin size={20} />
-						<p>{agent?.agentFields?.agentsLocation}</p>
+						<p>{agent?.agents?.agentsLocation}</p>
 					</div>
 					<p className="flex items-center gap-2 text-base font-medium">
 						<Phone />
-						{agent?.agentFields?.phoneNumber}
+						{agent?.agents?.phoneNumber}
 					</p>
 					<p className="mb-3 mt-2 flex items-center gap-2 text-base font-medium">
 						<Mail />
-						{agent?.agentFields?.email}
+						{agent?.agents?.email}
 					</p>
 					<button className="my-6 flex items-center gap-4 rounded-full bg-blue-600 px-6 py-2.5 text-white">
 						Contact agent <ChevronRight />
 					</button>
 					<p
 						dangerouslySetInnerHTML={{
-							__html: agent?.agentFields?.agentsDescription ?? "",
+							__html: agent?.agents?.agentsDescription ?? "",
 						}}
 					>
 						{}
@@ -77,7 +77,7 @@ export default async function SingleAgentPage({ params }: AgentPageProps) {
 				</main>
 			</div>
 			<Suspense>
-				<ActiveListings data={agent?.agentFields?.relationWithProperties?.nodes} />
+				<ActiveListings data={agent?.agents?.relationWithProperties?.nodes} />
 			</Suspense>
 		</section>
 	);

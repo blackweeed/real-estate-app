@@ -1,5 +1,5 @@
 "use client";
-import { User, X } from "lucide-react";
+import { User } from "lucide-react";
 import { useState } from "react";
 import { UserLoginMenu } from "./UserLoginMenu";
 

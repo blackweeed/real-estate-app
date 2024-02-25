@@ -1,4 +1,4 @@
-fragment AgentDetails on WithAcfAgents {
+fragment AgentDetails on WithAcfAgentFields {
 	agents {
 		email
 		phoneNumber

@@ -1,8 +1,8 @@
-query GetPropertiesList {
-	properties(first: 1) {
+query GetPropertiesListPaginated {
+	properties {
 		nodes {
 			slug
-			propertieFields {
+			polaPropertie {
 				map {
 					city
 					streetName

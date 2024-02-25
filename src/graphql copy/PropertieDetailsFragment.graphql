@@ -1,0 +1,33 @@
+fragment PropertieDetails on WithAcfPropertieFields {
+	propertieFields {
+		map {
+			city
+			country
+			postCode
+			streetName
+			placeId
+			longitude
+			latitude
+			state
+			streetAddress
+		}
+		area
+		price
+		propertyDescription
+		numberOfRooms
+		numberOfBeds
+		buyOrLease
+
+		typeOfDevelopment
+		relationWithProperties {
+			nodes {
+				slug
+			}
+		}
+		images {
+			nodes {
+				mediaItemUrl
+			}
+		}
+	}
+}
