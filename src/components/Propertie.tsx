@@ -1,6 +1,6 @@
 import { Dot } from "lucide-react";
-import Image from "next/image";
 import Link from "next/link";
+import { PropertieWithSlider } from "./PropertieWithSlider";
 import { formatPrice } from "@/app/utils";
 import { getSinglePropertieBySlug } from "@/api/properties";
 
@@ -9,7 +9,11 @@ export const Propertie = async ({ slug }: { slug: string }) => {
 
 	return (
 		<Link href={`/properites/${slug}`} className="h-[360px] w-full " key={propertie?.date}>
-			<div className="relative h-[80%] w-full cursor-pointer overflow-hidden rounded-lg">
+			<PropertieWithSlider
+				buyOrLease={propertie?.propertieFields?.buyOrLease}
+				images={propertie?.propertieFields?.images?.nodes}
+			/>
+			{/* <div className="relative h-[80%] w-full cursor-pointer overflow-hidden rounded-lg">
 				<div className="absolute left-3 top-3 z-30 flex h-8 w-24 items-center justify-center rounded-md bg-white/60 font-semibold uppercase text-blue-600">
 					{propertie?.propertieFields?.buyOrLease}
 				</div>
@@ -19,7 +23,7 @@ export const Propertie = async ({ slug }: { slug: string }) => {
 					alt=""
 					fill
 				/>
-			</div>
+			</div> */}
 			<p className="mt-2 text-xl font-semibold ">
 				{formatPrice(propertie?.propertieFields?.price ?? 0)}
 			</p>

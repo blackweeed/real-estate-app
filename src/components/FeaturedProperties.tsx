@@ -22,7 +22,7 @@ export const FeaturedProperties = async () => {
 				</div>
 				<Filters />
 			</div>
-			<div className="grid grid-cols-1 gap-10 lg:grid-cols-3">
+			<div className="mb-40 grid grid-cols-1 gap-10 lg:grid-cols-3">
 				{properties?.map((propertie) => {
 					return <Propertie key={propertie.slug} slug={propertie.slug ?? ""} />;
 				})}
