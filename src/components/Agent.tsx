@@ -12,7 +12,7 @@ export const Agent = async ({ slug }: { slug: string }) => {
 			<div className="flex h-full w-full gap-8">
 				<div className="relative h-full w-36  overflow-hidden rounded-lg">
 					<Image
-						src={agent?.agentFields?.avatar?.node.mediaItemUrl ?? ""}
+						src={agent?.agents?.avatar?.node.mediaItemUrl ?? ""}
 						fill
 						alt=""
 						className="object-cover "
@@ -20,8 +20,8 @@ export const Agent = async ({ slug }: { slug: string }) => {
 				</div>
 				<div>
 					<h2 className="mb-4 text-lg font-semibold text-blue-600">{agent?.title}</h2>
-					<p>{agent?.agentFields?.email}</p>
-					<p>{agent?.agentFields?.phoneNumber}</p>
+					<p>{agent?.agents?.email}</p>
+					<p>{agent?.agents?.phoneNumber}</p>
 				</div>
 			</div>
 		</Link>

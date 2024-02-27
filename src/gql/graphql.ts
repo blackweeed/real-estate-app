@@ -12786,6 +12786,8 @@ export type PropertieFields = AcfFieldGroup & AcfFieldGroupFields & PropertieFie
   images?: Maybe<AcfMediaItemConnection>;
   /** Field of the &quot;google_map&quot; Field Type added to the schema as part of the &quot;PropertieFields&quot; Field Group */
   map?: Maybe<AcfGoogleMap>;
+  /** Field of the &quot;text&quot; Field Type added to the schema as part of the &quot;PropertieFields&quot; Field Group */
+  numberOfBathrooms?: Maybe<Scalars['String']['output']>;
   /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;PropertieFields&quot; Field Group */
   numberOfBeds?: Maybe<Scalars['Float']['output']>;
   /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;PropertieFields&quot; Field Group */
@@ -12833,6 +12835,8 @@ export type PropertieFields_Fields = {
   images?: Maybe<AcfMediaItemConnection>;
   /** Field of the &quot;google_map&quot; Field Type added to the schema as part of the &quot;PropertieFields&quot; Field Group */
   map?: Maybe<AcfGoogleMap>;
+  /** Field of the &quot;text&quot; Field Type added to the schema as part of the &quot;PropertieFields&quot; Field Group */
+  numberOfBathrooms?: Maybe<Scalars['String']['output']>;
   /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;PropertieFields&quot; Field Group */
   numberOfBeds?: Maybe<Scalars['Float']['output']>;
   /** Field of the &quot;number&quot; Field Type added to the schema as part of the &quot;PropertieFields&quot; Field Group */
@@ -18678,14 +18682,14 @@ export type GetPropertiesListPaginatedQueryVariables = Exact<{ [key: string]: ne
 
 export type GetPropertiesListPaginatedQuery = { properties?: { nodes: Array<{ slug?: string | null, propertieFields?: { area?: number | null, price?: number | null, numberOfRooms?: number | null, numberOfBeds?: number | null, buyOrLease?: Array<string | null> | null, map?: { city?: string | null, streetName?: string | null, streetNumber?: string | null, postCode?: string | null, country?: string | null, state?: string | null } | null, images?: { nodes: Array<{ mediaItemUrl?: string | null }> } | null } | null }> } | null };
 
-export type PropertieDetailsFragment = { propertieFields?: { area?: number | null, price?: number | null, propertyDescription?: string | null, numberOfRooms?: number | null, numberOfBeds?: number | null, buyOrLease?: Array<string | null> | null, typeOfDevelopment?: string | null, map?: { city?: string | null, country?: string | null, postCode?: string | null, streetName?: string | null, placeId?: string | null, longitude?: number | null, latitude?: number | null, state?: string | null, streetAddress?: string | null } | null, relationWithProperties?: { nodes: Array<{ slug?: string | null } | { slug?: string | null } | { slug?: string | null } | { slug?: string | null } | { slug?: string | null }> } | null, images?: { nodes: Array<{ mediaItemUrl?: string | null }> } | null } | null };
+export type PropertieDetailsFragment = { propertieFields?: { area?: number | null, price?: number | null, propertyDescription?: string | null, numberOfRooms?: number | null, numberOfBeds?: number | null, numberOfBathrooms?: string | null, buyOrLease?: Array<string | null> | null, typeOfDevelopment?: string | null, map?: { city?: string | null, country?: string | null, postCode?: string | null, streetName?: string | null, placeId?: string | null, longitude?: number | null, latitude?: number | null, state?: string | null, streetAddress?: string | null } | null, relationWithProperties?: { nodes: Array<{ slug?: string | null } | { slug?: string | null } | { slug?: string | null } | { slug?: string | null } | { slug?: string | null }> } | null, images?: { nodes: Array<{ mediaItemUrl?: string | null }> } | null } | null };
 
 export type PropertieGetbySlugQueryVariables = Exact<{
   ProperiteID: Scalars['ID']['input'];
 }>;
 
 
-export type PropertieGetbySlugQuery = { propertie?: { modified?: string | null, date?: string | null, title?: string | null, propertieFields?: { area?: number | null, price?: number | null, propertyDescription?: string | null, numberOfRooms?: number | null, numberOfBeds?: number | null, buyOrLease?: Array<string | null> | null, typeOfDevelopment?: string | null, map?: { city?: string | null, country?: string | null, postCode?: string | null, streetName?: string | null, placeId?: string | null, longitude?: number | null, latitude?: number | null, state?: string | null, streetAddress?: string | null } | null, relationWithProperties?: { nodes: Array<{ slug?: string | null } | { slug?: string | null } | { slug?: string | null } | { slug?: string | null } | { slug?: string | null }> } | null, images?: { nodes: Array<{ mediaItemUrl?: string | null }> } | null } | null } | null };
+export type PropertieGetbySlugQuery = { propertie?: { modified?: string | null, date?: string | null, title?: string | null, propertieFields?: { area?: number | null, price?: number | null, propertyDescription?: string | null, numberOfRooms?: number | null, numberOfBeds?: number | null, numberOfBathrooms?: string | null, buyOrLease?: Array<string | null> | null, typeOfDevelopment?: string | null, map?: { city?: string | null, country?: string | null, postCode?: string | null, streetName?: string | null, placeId?: string | null, longitude?: number | null, latitude?: number | null, state?: string | null, streetAddress?: string | null } | null, relationWithProperties?: { nodes: Array<{ slug?: string | null } | { slug?: string | null } | { slug?: string | null } | { slug?: string | null } | { slug?: string | null }> } | null, images?: { nodes: Array<{ mediaItemUrl?: string | null }> } | null } | null } | null };
 
 export type SubmitFormMutationVariables = Exact<{
   FirstName: Scalars['String']['input'];
@@ -18750,6 +18754,7 @@ export const PropertieDetailsFragmentDoc = new TypedDocumentString(`
     propertyDescription
     numberOfRooms
     numberOfBeds
+    numberOfBathrooms
     buyOrLease
     typeOfDevelopment
     relationWithProperties {
@@ -18813,7 +18818,7 @@ export const GetAgentsListDocument = new TypedDocumentString(`
     `) as unknown as TypedDocumentString<GetAgentsListQuery, GetAgentsListQueryVariables>;
 export const GetPropertiesListDocument = new TypedDocumentString(`
     query GetPropertiesList {
-  properties(first: 1) {
+  properties(first: 4) {
     nodes {
       slug
       propertieFields {
@@ -18896,6 +18901,7 @@ export const PropertieGetbySlugDocument = new TypedDocumentString(`
     propertyDescription
     numberOfRooms
     numberOfBeds
+    numberOfBathrooms
     buyOrLease
     typeOfDevelopment
     relationWithProperties {

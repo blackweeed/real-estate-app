@@ -11,7 +11,7 @@ export const ActiveListings = async ({ data }) => {
 			</p>
 
 			<div className="mb-8 grid  grid-cols-1 gap-12 lg:grid-cols-3">
-				{data.map((slug) => {
+				{data?.map((slug) => {
 					return <Propertie key={slug.slug} slug={slug.slug} />;
 				})}
 			</div>

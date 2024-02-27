@@ -32,7 +32,7 @@ export default async function Home() {
 				<Image src="/images/bg-img.jpg" alt="bg-image" fill className="object-cover" priority />
 			</div>
 			<FeaturedProperties />
-			<div className="px-6">
+			<div className="bg-gray-50 px-6 py-6">
 				<GetInTouch />
 			</div>
 		</main>

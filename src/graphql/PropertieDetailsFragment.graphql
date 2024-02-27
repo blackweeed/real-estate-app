@@ -16,6 +16,7 @@ fragment PropertieDetails on WithAcfPropertieFields {
 		propertyDescription
 		numberOfRooms
 		numberOfBeds
+		numberOfBathrooms
 		buyOrLease
 
 		typeOfDevelopment
