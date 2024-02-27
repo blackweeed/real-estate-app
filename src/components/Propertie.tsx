@@ -8,7 +8,8 @@ export const Propertie = async ({ slug }: { slug: string }) => {
 	const propertie = await getSinglePropertieBySlug(slug);
 
 	return (
-		<Link href={`/properites/${slug}`} className="h-[360px] w-full " key={propertie?.date}>
+		<div className="h-[360px] w-full ">
+			{/* <Link href={`/properites/${slug}`} className="h-[360px] w-full " key={propertie?.date}> */}
 			<PropertieWithSlider
 				buyOrLease={propertie?.propertieFields?.buyOrLease}
 				images={propertie?.propertieFields?.images?.nodes}
@@ -44,6 +45,6 @@ export const Propertie = async ({ slug }: { slug: string }) => {
 				{propertie?.propertieFields?.numberOfBathrooms} Łazieniek <Dot />
 				{propertie?.propertieFields?.area}m²
 			</p>
-		</Link>
+		</div>
 	);
 };

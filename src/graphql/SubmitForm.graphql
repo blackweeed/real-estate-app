@@ -8,9 +8,9 @@ mutation SubmitForm(
 		input: {
 			id: 1
 			fieldValues: [
-				{ id: 1, nameValues: { first: $FirstName, last: $SecondName } }
-				{ id: 4, value: $PhoneNumber }
-				{ id: 3, value: $Comments }
+				{ id: 5, nameValues: { first: $FirstName, last: $SecondName } }
+				{ id: 7, value: $PhoneNumber }
+				{ id: 8, value: $Comments }
 			]
 		}
 	) {
