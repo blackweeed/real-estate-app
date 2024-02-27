@@ -39,13 +39,19 @@ export const PropertieWithSlider = ({ buyOrLease, images }: PropertieWithSliderP
 				))}
 				<div className="absolute inset-0 left-0 right-0 top-0 hidden items-center justify-between px-4 group-hover:flex">
 					<button
-						onClick={() => swiperRef.current?.slidePrev()}
+						onClick={(e) => {
+							e.preventDefault();
+							swiperRef.current?.slidePrev();
+						}}
 						className="z-50 text-3xl text-blue-600"
 					>
 						<ChevronLeft strokeWidth={1.25} size={60} />
 					</button>
 					<button
-						onClick={() => swiperRef.current?.slideNext()}
+						onClick={(e) => {
+							e.preventDefault();
+							swiperRef.current?.slideNext();
+						}}
 						className="z-50 text-3xl text-blue-600"
 					>
 						<ChevronRight strokeWidth={1.25} size={60} />

@@ -18919,7 +18919,7 @@ export const PropertieGetbySlugDocument = new TypedDocumentString(`
 export const SubmitFormDocument = new TypedDocumentString(`
     mutation SubmitForm($FirstName: String!, $SecondName: String!, $PhoneNumber: String!, $Comments: String!) {
   submitGfForm(
-    input: {id: 1, fieldValues: [{id: 1, nameValues: {first: $FirstName, last: $SecondName}}, {id: 4, value: $PhoneNumber}, {id: 3, value: $Comments}]}
+    input: {id: 1, fieldValues: [{id: 5, nameValues: {first: $FirstName, last: $SecondName}}, {id: 7, value: $PhoneNumber}, {id: 8, value: $Comments}]}
   ) {
     errors {
       message

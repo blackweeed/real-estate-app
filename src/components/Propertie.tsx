@@ -8,23 +8,11 @@ export const Propertie = async ({ slug }: { slug: string }) => {
 	const propertie = await getSinglePropertieBySlug(slug);
 
 	return (
-		<div className="h-[360px] w-full ">
-			{/* <Link href={`/properites/${slug}`} className="h-[360px] w-full " key={propertie?.date}> */}
+		<Link href={`/properites/${slug}`} className="h-[360px] w-full " key={propertie?.date}>
 			<PropertieWithSlider
 				buyOrLease={propertie?.propertieFields?.buyOrLease}
 				images={propertie?.propertieFields?.images?.nodes}
 			/>
-			{/* <div className="relative h-[80%] w-full cursor-pointer overflow-hidden rounded-lg">
-				<div className="absolute left-3 top-3 z-30 flex h-8 w-24 items-center justify-center rounded-md bg-white/60 font-semibold uppercase text-blue-600">
-					{propertie?.propertieFields?.buyOrLease}
-				</div>
-				<Image
-					className="object-cover transition hover:scale-110"
-					src={propertie?.propertieFields?.images?.nodes[0].mediaItemUrl ?? ""}
-					alt=""
-					fill
-				/>
-			</div> */}
 			<p className="mt-2 text-xl font-semibold ">
 				{formatPrice(propertie?.propertieFields?.price ?? 0)}
 			</p>
@@ -45,6 +33,6 @@ export const Propertie = async ({ slug }: { slug: string }) => {
 				{propertie?.propertieFields?.numberOfBathrooms} Łazieniek <Dot />
 				{propertie?.propertieFields?.area}m²
 			</p>
-		</div>
+		</Link>
 	);
 };
