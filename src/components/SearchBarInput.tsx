@@ -2,7 +2,7 @@
 
 import { usePathname, useSearchParams, useRouter } from "next/navigation";
 
-export const SearchBarInput = () => {
+export const SearchBarInput = ({ transactionType }: { transactionType: string }) => {
 	const searchParams = useSearchParams();
 	const pathname = usePathname();
 	const { replace } = useRouter();
@@ -10,8 +10,12 @@ export const SearchBarInput = () => {
 		const params = new URLSearchParams(searchParams);
 		if (searchTerm) {
 			params.set("query", searchTerm);
+			if (!transactionType) {
+				params.set("transactionType", "kupno");
+			}
 		} else {
 			params.delete("query");
+			params.delete("transactionType");
 		}
 		replace(`${pathname}?${params.toString()}`);
 	};
