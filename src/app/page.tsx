@@ -3,7 +3,17 @@ import { SearchBar } from "../components/SearchBar";
 import { FeaturedProperties } from "../components/FeaturedProperties";
 import { GetInTouch } from "@/components/GetInTouch";
 
-export default async function Home() {
+export default function Home({
+	searchParams,
+}: {
+	searchParams?: {
+		query?: string;
+		transactionType?: string;
+	};
+}) {
+	const query = searchParams?.query || "";
+	const transactionType = searchParams?.transactionType || "";
+
 	return (
 		<main>
 			<div className="relative h-[80vh] w-full">
@@ -20,7 +30,9 @@ export default async function Home() {
 					>
 						Z nami to proste!
 					</h2>
-					<SearchBar />
+					<div className="relative w-[92%] lg:w-[60%]">
+						<SearchBar query={query} transactionType={transactionType} />
+					</div>
 				</div>
 				<div
 					className="absolute z-10 h-full w-full"

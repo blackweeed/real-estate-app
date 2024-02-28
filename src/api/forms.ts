@@ -1,5 +1,5 @@
 import { executeGraphql } from "./graphqlApi";
-import { SubmitFormDocument } from "@/gql/graphql";
+import { SearchFormDocument, SubmitFormDocument } from "@/gql/graphql";
 
 export async function SubmitContactForm(
 	first_name: string,
@@ -17,4 +17,15 @@ export async function SubmitContactForm(
 		},
 	});
 	return graphqlResponse.submitGfForm;
+}
+
+export async function SearchForm(buyOrLease: string, query: string) {
+	const graphqlResponse = await executeGraphql({
+		query: SearchFormDocument,
+		variables: {
+			buyOrLease: buyOrLease,
+			query: query,
+		},
+	});
+	return graphqlResponse.properties?.nodes;
 }

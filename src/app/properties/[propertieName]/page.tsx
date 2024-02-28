@@ -10,12 +10,12 @@ import { ImageGallery } from "@/components/ImageGallery";
 import { PropertieDescription } from "@/components/PropertieDescription";
 
 type PropertiePageProps = {
-	params: { properiteName: string };
+	params: { propertieName: string };
 	searchParams: { [key: string]: string | string[] | undefined };
 };
 
 export async function generateMetadata({ params }: PropertiePageProps): Promise<Metadata> {
-	const slug = params.properiteName;
+	const slug = params.propertieName;
 	const propertie = await getSinglePropertieBySlug(slug);
 
 	return {
@@ -25,7 +25,7 @@ export async function generateMetadata({ params }: PropertiePageProps): Promise<
 }
 
 export default async function ProperitePage({ params }: PropertiePageProps) {
-	const propertie = await getSinglePropertieBySlug(params.properiteName);
+	const propertie = await getSinglePropertieBySlug(params.propertieName);
 
 	return (
 		<main className="mt-32 px-6 lg:px-20">

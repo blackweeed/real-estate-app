@@ -8,7 +8,7 @@ export const Propertie = async ({ slug }: { slug: string }) => {
 	const propertie = await getSinglePropertieBySlug(slug);
 
 	return (
-		<Link href={`/properites/${slug}`} className="h-[360px] w-full " key={propertie?.date}>
+		<Link href={`/properties/${slug}`} className="h-[360px] w-full " key={propertie?.date}>
 			<PropertieWithSlider
 				buyOrLease={propertie?.propertieFields?.buyOrLease}
 				images={propertie?.propertieFields?.images?.nodes}

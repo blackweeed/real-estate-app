@@ -1,0 +1,21 @@
+query SearchForm($query: String!, $buyOrLease: String!) {
+	properties(where: { buyOrLease: $buyOrLease, search: $query }) {
+		nodes {
+			title
+			slug
+			propertieFields {
+				price
+				map {
+					city
+					streetName
+					postCode
+				}
+			}
+			featuredImage {
+				node {
+					mediaItemUrl
+				}
+			}
+		}
+	}
+}

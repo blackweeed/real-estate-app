@@ -9,7 +9,7 @@ export const FeaturedProperties = async () => {
 	const page = [1, 2, 3, 4, 5];
 
 	return (
-		<section className="relative -top-10 z-30 rounded-t-3xl bg-white px-6 pt-10 lg:px-20">
+		<section className=" -top-10 z-30 rounded-t-3xl bg-white px-6 pt-10 lg:px-20">
 			<div className="flex items-center justify-between">
 				<div className="mb-5">
 					<h2 className="text-3xl font-semibold text-blue-600 lg:text-4xl">

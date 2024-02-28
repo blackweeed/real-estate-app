@@ -15298,6 +15298,8 @@ export type RootQueryToPropertieConnectionPageInfo = PageInfo & PropertieConnect
 
 /** Arguments for filtering the RootQueryToPropertieConnection connection */
 export type RootQueryToPropertieConnectionWhereArgs = {
+  /** The databaseId of the post object to filter by */
+  buyOrLease?: InputMaybe<Scalars['String']['input']>;
   /** Filter the connection based on dates */
   dateQuery?: InputMaybe<DateQueryInput>;
   /** True for objects with passwords; False for objects without passwords; null for all objects with or without passwords */
@@ -18691,6 +18693,14 @@ export type PropertieGetbySlugQueryVariables = Exact<{
 
 export type PropertieGetbySlugQuery = { propertie?: { modified?: string | null, date?: string | null, title?: string | null, propertieFields?: { area?: number | null, price?: number | null, propertyDescription?: string | null, numberOfRooms?: number | null, numberOfBeds?: number | null, numberOfBathrooms?: string | null, buyOrLease?: Array<string | null> | null, typeOfDevelopment?: string | null, map?: { city?: string | null, country?: string | null, postCode?: string | null, streetName?: string | null, placeId?: string | null, longitude?: number | null, latitude?: number | null, state?: string | null, streetAddress?: string | null } | null, relationWithProperties?: { nodes: Array<{ slug?: string | null } | { slug?: string | null } | { slug?: string | null } | { slug?: string | null } | { slug?: string | null }> } | null, images?: { nodes: Array<{ mediaItemUrl?: string | null }> } | null } | null } | null };
 
+export type SearchFormQueryVariables = Exact<{
+  query: Scalars['String']['input'];
+  buyOrLease: Scalars['String']['input'];
+}>;
+
+
+export type SearchFormQuery = { properties?: { nodes: Array<{ title?: string | null, slug?: string | null, propertieFields?: { price?: number | null, map?: { city?: string | null, streetName?: string | null, postCode?: string | null } | null } | null, featuredImage?: { node: { mediaItemUrl?: string | null } } | null }> } | null };
+
 export type SubmitFormMutationVariables = Exact<{
   FirstName: Scalars['String']['input'];
   SecondName: Scalars['String']['input'];
@@ -18916,6 +18926,29 @@ export const PropertieGetbySlugDocument = new TypedDocumentString(`
     }
   }
 }`) as unknown as TypedDocumentString<PropertieGetbySlugQuery, PropertieGetbySlugQueryVariables>;
+export const SearchFormDocument = new TypedDocumentString(`
+    query SearchForm($query: String!, $buyOrLease: String!) {
+  properties(where: {buyOrLease: $buyOrLease, search: $query}) {
+    nodes {
+      title
+      slug
+      propertieFields {
+        price
+        map {
+          city
+          streetName
+          postCode
+        }
+      }
+      featuredImage {
+        node {
+          mediaItemUrl
+        }
+      }
+    }
+  }
+}
+    `) as unknown as TypedDocumentString<SearchFormQuery, SearchFormQueryVariables>;
 export const SubmitFormDocument = new TypedDocumentString(`
     mutation SubmitForm($FirstName: String!, $SecondName: String!, $PhoneNumber: String!, $Comments: String!) {
   submitGfForm(
