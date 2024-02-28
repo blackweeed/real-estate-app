@@ -17,7 +17,7 @@ export const Links = () => {
 						<Link
 							key={link.label}
 							href={`${link.link}`}
-							className="text-2xl font-bold capitalize text-blue-600 transition-all duration-500 hover:underline hover:decoration-wavy lg:text-3xl"
+							className="text-2xl font-bold capitalize text-blue-600 transition-all duration-500 hover:underline  lg:text-3xl"
 						>
 							{link.label}
 						</Link>

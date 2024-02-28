@@ -16,14 +16,18 @@ export const SearchBarSelect = () => {
 	};
 
 	return (
-		<div className="inline-flex cursor-pointer items-center gap-1.5">
+		<div className="hidden cursor-pointer  items-center gap-1.5 lg:inline-flex">
 			<select
 				onChange={(e) => handleSearch(e.target.value)}
 				defaultValue={searchParams.get("transactionType")?.toString()}
-				className="rounded-md border border-gray-300 p-2"
+				className="rounded-lg border border-none bg-white  py-2 transition duration-200 ease-in-out  focus:outline-none focus:ring "
 			>
-				<option value="kupno">Kup</option>
-				<option value="sprzedaż">Sprzedaj</option>
+				<option className="border-none bg-white" value="kupno">
+					Kup
+				</option>
+				<option className="border-none bg-white" value="sprzedaż">
+					Sprzedaj
+				</option>
 			</select>
 		</div>
 	);

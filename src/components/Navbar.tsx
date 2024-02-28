@@ -33,7 +33,7 @@ export const Navbar = () => {
 
 	return (
 		<nav
-			className={`${!visible && "hidden"} fixed left-0 right-0 top-0 z-40 mx-auto mt-4 w-[90%] rounded-full bg-white px-4 py-4 shadow-lg lg:px-20 `}
+			className={`${!visible && "hidden"} fixed left-0 right-0 top-0 z-40 mx-auto mt-4 w-[90%] rounded-full bg-white px-8 py-4 shadow-lg lg:px-20 `}
 		>
 			<div className="flex items-center justify-between">
 				<Logo />

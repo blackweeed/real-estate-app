@@ -18,9 +18,9 @@ export const GetInTouch = () => {
     dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500`;
 
 	return (
-		<div className="mb-6 flex flex-col items-center justify-around lg:flex-row">
+		<div className="mb-6 flex flex-col items-center justify-around lg:flex-row lg:bg-gray-50 lg:py-10">
 			<div className="mb-8 flex max-w-[550px] items-center justify-center gap-2 lg:mb-40">
-				<div>
+				<div className="px-6 lg:px-0">
 					<h3 className="mb-3 text-4xl font-bold text-blue-600 lg:text-5xl">
 						Skontaktuj się z nami!
 					</h3>

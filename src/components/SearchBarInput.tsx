@@ -24,7 +24,7 @@ export const SearchBarInput = ({ transactionType }: { transactionType: string })
 			onChange={(e) => handleSearch(e.target.value)}
 			defaultValue={searchParams.get("query")?.toString()}
 			type="text"
-			placeholder="Szukaj po adresie lub okolicy"
+			placeholder="Szukaj"
 			className="w-full py-2.5 text-sm outline-none"
 		/>
 	);

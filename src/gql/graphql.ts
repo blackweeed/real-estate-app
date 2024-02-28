@@ -18828,7 +18828,7 @@ export const GetAgentsListDocument = new TypedDocumentString(`
     `) as unknown as TypedDocumentString<GetAgentsListQuery, GetAgentsListQueryVariables>;
 export const GetPropertiesListDocument = new TypedDocumentString(`
     query GetPropertiesList {
-  properties(first: 4) {
+  properties(first: 10) {
     nodes {
       slug
       propertieFields {

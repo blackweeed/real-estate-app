@@ -33,7 +33,7 @@ export const Footer = () => {
 				<div className="flex flex-col items-center justify-between gap-2 py-10 lg:flex-row">
 					<Logo />
 					<p className="text-sm font-semibold text-gray-500">
-						© 2024 Serhant Real Estate, Inc. Prawa zarezerwowane.
+						© 2024 Twoje Nieruchomości, Inc. Prawa zarezerwowane.
 					</p>
 					<div>
 						<ul className="mt-3 flex gap-4 lg:mt-0">

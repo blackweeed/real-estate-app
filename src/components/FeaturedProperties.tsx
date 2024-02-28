@@ -1,15 +1,12 @@
-import { Filters } from "./Filters";
+import Link from "next/link";
 import { Propertie } from "./Propertie";
-import { Pagination } from "./Pagination";
 import { getPropertiesList } from "@/api/properties";
 
 export const FeaturedProperties = async () => {
 	const properties = await getPropertiesList();
 
-	const page = [1, 2, 3, 4, 5];
-
 	return (
-		<section className=" -top-10 z-30 rounded-t-3xl bg-white px-6 pt-10 lg:px-20">
+		<section className=" -top-10 z-30 rounded-t-3xl bg-white px-6 py-10 lg:px-20">
 			<div className="flex items-center justify-between">
 				<div className="mb-5">
 					<h2 className="text-3xl font-semibold text-blue-600 lg:text-4xl">
@@ -20,18 +17,18 @@ export const FeaturedProperties = async () => {
 						nie tylko.
 					</p>
 				</div>
-				<Filters />
 			</div>
-			<div className="mb-40 grid grid-cols-1 gap-10 lg:grid-cols-3">
+			<div className="mb-10 grid grid-cols-1 gap-y-16 lg:grid-cols-3 lg:gap-10">
 				{properties?.map((propertie) => {
 					return <Propertie key={propertie.slug} slug={propertie.slug ?? ""} />;
 				})}
 			</div>
-			<div className="my-12 flex justify-center gap-4">
-				{page.map((page) => (
-					<Pagination key={page} page={page} pageNumber="1" />
-				))}
-			</div>
+			<Link
+				className="inline-flex items-center justify-between gap-2 rounded-full bg-blue-600 px-2 py-2 text-lg text-white lg:px-6"
+				href="/buy"
+			>
+				Zobacz więcej
+			</Link>
 		</section>
 	);
 };

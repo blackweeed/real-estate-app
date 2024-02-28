@@ -13,7 +13,7 @@ export const Propertie = async ({ slug }: { slug: string }) => {
 				buyOrLease={propertie?.propertieFields?.buyOrLease}
 				images={propertie?.propertieFields?.images?.nodes}
 			/>
-			<p className="mt-2 text-xl font-semibold ">
+			<p className="mt-2 text-lg font-semibold lg:text-xl ">
 				{formatPrice(propertie?.propertieFields?.price ?? 0)}
 			</p>
 			<div className="flex">
@@ -27,7 +27,7 @@ export const Propertie = async ({ slug }: { slug: string }) => {
 						`, ${propertie?.propertieFields?.map?.postCode}`}
 				</p>
 			</div>
-			<p className="inline-flex items-center ">
+			<p className=" inline-flex flex-wrap items-center">
 				{propertie?.propertieFields?.numberOfRooms} Pokoi <Dot />
 				{propertie?.propertieFields?.numberOfBeds} Łóżek <Dot />
 				{propertie?.propertieFields?.numberOfBathrooms} Łazieniek <Dot />
