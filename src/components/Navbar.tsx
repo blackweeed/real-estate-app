@@ -6,16 +6,17 @@ import { useEffect, useState } from "react";
 import { Logo } from "./Logo";
 import { ToggleMenuButton } from "./ToggleMenuButton";
 import { ToggleAgentMenuButton } from "./ToggleAgentMenuButton";
+import { ActiveLink } from "./ActiveLink";
 
 export const Navbar = () => {
 	const [prevScrollPos, setPrevScrollPos] = useState(0);
 	const [visible, setVisible] = useState(true);
 
 	const links = [
-		{ href: "/buy", name: "Kup" },
-		{ href: "/rent", name: "Wynajmij" },
-		{ href: "/sell", name: "Sprzedaj" },
-		{ href: "/agents", name: "Agenci" },
+		{ href: "/buy", label: "Kup" },
+		{ href: "/rent", label: "Wynajmij" },
+		{ href: "/sell", label: "Sprzedaj" },
+		{ href: "/agents", label: "Agenci" },
 	];
 
 	useEffect(() => {
@@ -40,9 +41,9 @@ export const Navbar = () => {
 				<div className="flex items-center gap-2 lg:gap-4 ">
 					<div className="hidden gap-4 lg:flex">
 						{links.map((link) => (
-							<Link key={link.name} href={link.href}>
-								{link.name}
-							</Link>
+							<ActiveLink key={link.label} href={link.href}>
+								{link.label}
+							</ActiveLink>
 						))}
 					</div>
 					<ToggleAgentMenuButton />

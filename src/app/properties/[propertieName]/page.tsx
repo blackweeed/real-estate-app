@@ -34,7 +34,7 @@ export default async function ProperitePage({ params }: PropertiePageProps) {
 					return (
 						<ImageGallery
 							key={index}
-							image={image.mediaItemUrl}
+							image={image.mediaItemUrl ?? ""}
 							images={propertie.propertieFields?.images?.nodes}
 							index={index}
 							buyOrLease={propertie.propertieFields?.buyOrLease}

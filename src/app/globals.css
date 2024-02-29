@@ -20,7 +20,7 @@
 	grid-template-columns: 1fr 20% 20%;
 }
 
-.ESSA:first-child {
+.photoGallery-image:first-child {
 	grid-area: photoOne;
 	height: 31.25rem;
 }
@@ -36,11 +36,11 @@
 		grid-template-columns: 1fr 1fr 1fr 1fr;
 	}
 
-	.ESSA:first-child {
+	.photoGallery-image:first-child {
 		grid-area: photoOne;
 		height: 15.875rem;
 	}
-	.ESSA:nth-child(2) {
+	.photoGallery-image:nth-child(2) {
 		grid-area: photoTwo;
 		height: 5.25rem;
 	}

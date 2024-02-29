@@ -18,7 +18,7 @@ export const PropertieWithSlider = ({ buyOrLease, images }: PropertieWithSliderP
 	const swiperRef = useRef(null);
 	return (
 		<div className="group relative h-[80%] w-full cursor-pointer overflow-hidden rounded-lg">
-			<div className="absolute left-3 top-3 z-30 flex h-8 w-fit items-center justify-center rounded-md bg-white/60 px-2 font-semibold uppercase text-blue-600">
+			<div className="absolute left-3 top-3 z-20 flex h-8 w-fit items-center justify-center rounded-md bg-white/60 px-2 font-semibold uppercase text-blue-600">
 				{buyOrLease}
 			</div>
 			<Swiper

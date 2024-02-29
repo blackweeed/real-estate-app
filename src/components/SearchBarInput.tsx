@@ -11,7 +11,7 @@ export const SearchBarInput = ({ transactionType }: { transactionType: string })
 		if (searchTerm) {
 			params.set("query", searchTerm);
 			if (!transactionType) {
-				params.set("transactionType", "kupno");
+				params.set("transactionType", "Na sprzedaż");
 			}
 		} else {
 			params.delete("query");

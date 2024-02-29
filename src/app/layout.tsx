@@ -8,7 +8,7 @@ const roboto = Roboto({ subsets: ["latin"], weight: "400", variable: "--font-rob
 const maven = Maven_Pro({ subsets: ["latin"], variable: "--font-maven" });
 
 export const metadata: Metadata = {
-	title: "nieruchomości.pl - kup wymarzoną nieruchomość",
+	title: "Twoje Nieruchomości - kup wymarzoną nieruchomość",
 	description: "Znajdź idealną nieruchomość dla siebie z naszą pomocą.",
 	keywords: "nieruchomość, kupno nieruchomości, mieszkanie, dom",
 };

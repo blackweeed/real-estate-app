@@ -1,8 +1,15 @@
+import type { Metadata } from "next";
 import { GetPropertiesListBuyOrLease } from "@/api/properties";
 import { Filters } from "@/components/Filters";
 import { GetInTouch } from "@/components/GetInTouch";
 import { Pagination } from "@/components/Pagination";
 import { Propertie } from "@/components/Propertie";
+
+export const metadata: Metadata = {
+	title: "Kup nieruchomość",
+	description: "Kup wymarzoną nieruchomość dla siebie z naszą pomocą.",
+	keywords: "nieruchomość, kupno nieruchomości, mieszkanie, dom",
+};
 
 export default async function Buy() {
 	const properties = await GetPropertiesListBuyOrLease("Na sprzedaż");
@@ -11,7 +18,7 @@ export default async function Buy() {
 	return (
 		<section className="mt-32">
 			<section className=" -top-10 z-30 rounded-t-3xl bg-white px-6 pt-10 lg:px-20">
-				<div className="mb-8 flex items-center justify-between">
+				<div className="mb-8 flex flex-wrap items-center justify-between gap-3 lg:gap-0">
 					<div className="mb-5">
 						<h2 className="text-3xl font-semibold text-blue-600 lg:text-4xl">
 							Nieruchomości - Kupno
