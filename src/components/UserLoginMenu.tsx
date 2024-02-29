@@ -1,12 +1,20 @@
 import { AnimatePresence, motion } from "framer-motion";
+import { useEffect } from "react";
 import { X } from "lucide-react";
 import { LoginForm } from "./LoginForm";
+import { disableScroll, enableScroll } from "@/app/utils";
 
 type UserLoginMenuProps = {
 	setToggleUserMenu: (toggle: boolean) => void;
 };
 
 export const UserLoginMenu = ({ setToggleUserMenu }: UserLoginMenuProps) => {
+	useEffect(() => {
+		disableScroll();
+
+		return () => enableScroll();
+	}, []);
+
 	return (
 		<AnimatePresence>
 			<motion.div

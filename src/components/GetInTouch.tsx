@@ -13,9 +13,7 @@ export const GetInTouch = () => {
 	const [messagePopup, setMessagePopup] = useState(false);
 
 	const inputStyles = `bg-gray-50 border border-gray-300 text-gray-900 text-lg rounded-lg 
-    focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 
-    dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 
-    dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500`;
+    focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5`;
 
 	return (
 		<div className="mb-6 flex flex-col items-center justify-around lg:flex-row lg:bg-gray-50 lg:py-10">

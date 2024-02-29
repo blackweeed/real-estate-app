@@ -1,7 +1,0 @@
-query AgentGetBySlug($AgentID: ID!) {
-	agent(id: $AgentID, idType: SLUG) {
-		date
-		title
-		...AgentDetails
-	}
-}

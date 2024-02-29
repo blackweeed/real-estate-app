@@ -18679,6 +18679,13 @@ export type GetPropertiesListQueryVariables = Exact<{ [key: string]: never; }>;
 
 export type GetPropertiesListQuery = { properties?: { nodes: Array<{ slug?: string | null, propertieFields?: { area?: number | null, price?: number | null, numberOfRooms?: number | null, numberOfBeds?: number | null, buyOrLease?: Array<string | null> | null, map?: { city?: string | null, streetName?: string | null, streetNumber?: string | null, postCode?: string | null, country?: string | null, state?: string | null } | null, images?: { nodes: Array<{ mediaItemUrl?: string | null }> } | null } | null }> } | null };
 
+export type GetPropertiesListBuyOrLeaseQueryVariables = Exact<{
+  buyOrLease: Scalars['String']['input'];
+}>;
+
+
+export type GetPropertiesListBuyOrLeaseQuery = { properties?: { nodes: Array<{ slug?: string | null, propertieFields?: { area?: number | null, price?: number | null, numberOfRooms?: number | null, numberOfBeds?: number | null, buyOrLease?: Array<string | null> | null, map?: { city?: string | null, streetName?: string | null, streetNumber?: string | null, postCode?: string | null, country?: string | null, state?: string | null } | null, images?: { nodes: Array<{ mediaItemUrl?: string | null }> } | null } | null }> } | null };
+
 export type GetPropertiesListPaginatedQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -18855,6 +18862,35 @@ export const GetPropertiesListDocument = new TypedDocumentString(`
   }
 }
     `) as unknown as TypedDocumentString<GetPropertiesListQuery, GetPropertiesListQueryVariables>;
+export const GetPropertiesListBuyOrLeaseDocument = new TypedDocumentString(`
+    query GetPropertiesListBuyOrLease($buyOrLease: String!) {
+  properties(where: {buyOrLease: $buyOrLease}) {
+    nodes {
+      slug
+      propertieFields {
+        map {
+          city
+          streetName
+          streetNumber
+          postCode
+          country
+          state
+        }
+        area
+        price
+        numberOfRooms
+        numberOfBeds
+        buyOrLease
+        images {
+          nodes {
+            mediaItemUrl
+          }
+        }
+      }
+    }
+  }
+}
+    `) as unknown as TypedDocumentString<GetPropertiesListBuyOrLeaseQuery, GetPropertiesListBuyOrLeaseQueryVariables>;
 export const GetPropertiesListPaginatedDocument = new TypedDocumentString(`
     query GetPropertiesListPaginated {
   properties {

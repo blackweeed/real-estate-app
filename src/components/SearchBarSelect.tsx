@@ -22,11 +22,11 @@ export const SearchBarSelect = () => {
 				defaultValue={searchParams.get("transactionType")?.toString()}
 				className="rounded-lg border border-none bg-white  py-2 transition duration-200 ease-in-out  focus:outline-none focus:ring "
 			>
-				<option className="border-none bg-white" value="kupno">
+				<option className="border-none bg-white" value="Na sprzedaż">
 					Kup
 				</option>
-				<option className="border-none bg-white" value="sprzedaż">
-					Sprzedaj
+				<option className="border-none bg-white" value="Pod wynajem">
+					Wynajem
 				</option>
 			</select>
 		</div>

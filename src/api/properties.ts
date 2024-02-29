@@ -1,9 +1,21 @@
 import { executeGraphql } from "./graphqlApi";
-import { GetPropertiesListDocument, PropertieGetbySlugDocument } from "@/gql/graphql";
+import {
+	GetPropertiesListBuyOrLeaseDocument,
+	GetPropertiesListDocument,
+	PropertieGetbySlugDocument,
+} from "@/gql/graphql";
 
 export const getPropertiesList = async () => {
 	const graphqlResponse = await executeGraphql({
 		query: GetPropertiesListDocument,
+	});
+
+	return graphqlResponse.properties?.nodes;
+};
+export const GetPropertiesListBuyOrLease = async (buyOrLease: string) => {
+	const graphqlResponse = await executeGraphql({
+		query: GetPropertiesListBuyOrLeaseDocument,
+		variables: { buyOrLease: buyOrLease },
 	});
 
 	return graphqlResponse.properties?.nodes;

@@ -1,5 +1,5 @@
-query GetPropertiesList {
-	properties(first: 6) {
+query GetPropertiesListBuyOrLease($buyOrLease: String!) {
+	properties(where: { buyOrLease: $buyOrLease }) {
 		nodes {
 			slug
 			propertieFields {

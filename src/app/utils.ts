@@ -54,3 +54,11 @@ export function capitalizeFirstLetter(string: string) {
 	if (!string) return "";
 	return string.charAt(0).toUpperCase() + string.slice(1);
 }
+
+export const disableScroll = () => {
+	document.body.style.overflow = "hidden";
+};
+
+export const enableScroll = () => {
+	document.body.style.overflow = "unset";
+};

@@ -4,8 +4,8 @@ import { GetInTouch } from "@/components/GetInTouch";
 import { Pagination } from "@/components/Pagination";
 import { Propertie } from "@/components/Propertie";
 
-export default async function Buy() {
-	const properties = await GetPropertiesListBuyOrLease("Na sprzedaż");
+export default async function Rent() {
+	const properties = await GetPropertiesListBuyOrLease("Pod wynajem");
 
 	const page = [1, 2, 3, 4, 5];
 	return (
@@ -14,7 +14,7 @@ export default async function Buy() {
 				<div className="mb-8 flex items-center justify-between">
 					<div className="mb-5">
 						<h2 className="text-3xl font-semibold text-blue-600 lg:text-4xl">
-							Nieruchomości - Kupno
+							Nieruchomości - Wynajem
 						</h2>
 					</div>
 					<Filters />

@@ -1,9 +1,15 @@
 "use client";
 
+import { formatPrice } from "@/app/utils";
 import { Check, RotateCcw, SlidersHorizontal, X } from "lucide-react";
 import React, { useEffect, useState } from "react";
+import Slider from "react-slider";
+import { twMerge } from "tailwind-merge";
 
 export const Filters = () => {
+	const MIN = 1000;
+	const MAX = 20000;
+	const [values, setvalues] = useState([MIN, MAX]);
 	const [toggle, setToggle] = useState(false);
 	const beds = [1, 2, 3, 4, 5];
 
@@ -36,7 +42,6 @@ export const Filters = () => {
 				<SlidersHorizontal size={18} strokeWidth={2.75} />
 			</button>
 			<div
-				// onClick={() => setToggle(false)}
 				className={`${
 					toggle ? "fixed" : "hidden"
 				}  left-0 top-0 z-40 flex h-full w-full justify-end bg-black/40`}
@@ -52,21 +57,21 @@ export const Filters = () => {
 								<X />
 							</button>
 						</div>
-						<div className="mt-16 px-10 lg:px-20">
+						<div className="mt-8 px-10 lg:px-20">
 							<h3 className="mb-4 text-xl font-semibold text-blue-600">Filtruj po cechach</h3>
 							<h4 className="mb-3 text-lg font-semibold">Łóżka</h4>
-							<div className="flex w-full flex-shrink ">
+							<div className="flex w-full flex-shrink overflow-hidden rounded-3xl border border-[#dce5e4]">
 								<label className="label w-full">
 									<input required type="radio" name="bed" />
-									<div className="flex h-[50px] w-full cursor-pointer items-center justify-center  border border-[#dce5e4] hover:bg-blue-600/20">
-										Any
+									<div className="flex h-[50px] w-full cursor-pointer items-center justify-center border border-[#dce5e4] hover:bg-blue-600/20">
+										Dow.
 									</div>
 								</label>
 								{beds.map((item) => (
 									<React.Fragment key={item}>
-										<label className="label w-full">
-											<input required type="radio" name="bed" />
-											<div className="flex h-[50px] w-full cursor-pointer items-center justify-center border border-[#dce5e4]  hover:bg-blue-600/20">
+										<label className="label w-full ">
+											<input required type="radio" name="bath" />
+											<div className="flex h-[50px] w-full cursor-pointer items-center justify-center border border-[#dce5e4]   hover:bg-blue-600/20">
 												{item}+
 											</div>
 										</label>
@@ -74,11 +79,11 @@ export const Filters = () => {
 								))}
 							</div>
 							<h4 className="mb-3 mt-6 text-lg font-semibold">Łazienki</h4>
-							<div className="flex w-full flex-shrink ">
+							<div className="flex w-full flex-shrink overflow-hidden rounded-3xl border border-[#dce5e4]">
 								<label className="label w-full">
 									<input required type="radio" name="bed" />
-									<div className="flex h-[50px] w-full cursor-pointer items-center justify-center  border border-[#dce5e4] hover:bg-blue-600/20">
-										Any
+									<div className="flex h-[50px] w-full cursor-pointer items-center justify-center border border-[#dce5e4] hover:bg-blue-600/20">
+										Dow.
 									</div>
 								</label>
 								{beds.map((item) => (
@@ -93,6 +98,23 @@ export const Filters = () => {
 								))}
 							</div>
 						</div>
+					</div>
+					<div className="mt-6 px-10 lg:px-20">
+						<h3 className="mb-4 text-xl font-semibold text-blue-600">Cena</h3>
+						<div className="flex w-full justify-between">
+							<p className="text-base font-medium lg:text-lg">{formatPrice(values[0])}</p>
+							<p className="text-base font-medium lg:text-lg">{formatPrice(values[1])}</p>
+						</div>
+						<Slider
+							className={twMerge(
+								"mt-4 h-1 w-full cursor-pointer bg-blue-600",
+								"[&>.thumb]:-top-2.5 [&>.thumb]:h-6 [&>.thumb]:w-6 [&>.thumb]:cursor-pointer [&>.thumb]:rounded-full [&>.thumb]:border-2 [&>.thumb]:border-blue-600 [&>.thumb]:bg-white",
+							)}
+							onChange={setvalues}
+							value={values}
+							min={MIN}
+							max={MAX}
+						/>
 					</div>
 					<div className="mt-20 flex w-full gap-4 px-10 lg:px-20">
 						<button className="inline-flex w-full items-center justify-between  rounded-full border bg-white px-4 py-2 font-semibold tracking-wide text-black lg:px-8">

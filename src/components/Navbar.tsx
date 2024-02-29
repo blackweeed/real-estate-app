@@ -48,7 +48,7 @@ export const Navbar = () => {
 					<ToggleAgentMenuButton />
 					<Link
 						className="inline-flex items-center justify-between gap-2 rounded-full bg-blue-600 px-2 py-2 text-white lg:px-4"
-						href=""
+						href="/"
 					>
 						<p className="hidden lg:block">Znajdź</p> <Search size={20} strokeWidth={2.4} />
 					</Link>

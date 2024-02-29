@@ -17,7 +17,7 @@ export const SearchBar = async ({
 	return (
 		<div className="mt-6 flex w-full items-center justify-between gap-4 rounded-full bg-white py-2.5 pl-6 pr-4 lg:gap-0 lg:py-5 lg:pl-12">
 			<SearchBarSelect />
-			<div className="relative z-[9999] flex w-full items-center justify-between rounded-lg border border-black/40 px-6 lg:w-[40vw] lg:w-[48vw]">
+			<div className="relative z-[9999] flex w-full items-center justify-between rounded-lg border border-black/40 px-6 lg:w-[40vw]">
 				<SearchBarInput transactionType={transactionType} />
 				{query && (
 					<div className="absolute bottom-0 left-0 top-12 h-fit w-full bg-white px-2 py-3 shadow lg:px-6 lg:py-6">
