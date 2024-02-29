@@ -16,10 +16,10 @@ export const Footer = () => {
 		<>
 			<footer className="bg-white px-6 py-10 lg:flex lg:justify-around lg:px-20 ">
 				<div className="mb-8 flex flex-row gap-4 lg:mb-0 lg:flex-col">
-					<button className="flex w-48 items-center rounded-full bg-blue-600 px-6 py-2.5 font-medium text-white">
+					<button className="flex w-48 items-center rounded-full bg-blue-600 px-2.5 py-2.5 font-medium text-white">
 						<span className="w-20 lg:w-36">Dołącz</span> <ChevronRight />
 					</button>
-					<button className="flex w-48 items-center rounded-full border bg-white px-6 py-2.5 font-medium text-blue-600">
+					<button className="flex w-48 items-center rounded-full border bg-white px-2.5 py-2.5 font-medium text-blue-600">
 						<span className="w-20 lg:w-36">Login</span> <UnlockKeyhole />
 					</button>
 				</div>

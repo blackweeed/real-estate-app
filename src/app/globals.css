@@ -22,7 +22,7 @@
 
 .ESSA:first-child {
 	grid-area: photoOne;
-	height: 500px;
+	height: 31.25rem;
 }
 
 @media (max-width: 800px) {
@@ -38,10 +38,10 @@
 
 	.ESSA:first-child {
 		grid-area: photoOne;
-		height: 270px;
+		height: 15.875rem;
 	}
 	.ESSA:nth-child(2) {
 		grid-area: photoTwo;
-		height: 100px;
+		height: 5.25rem;
 	}
 }

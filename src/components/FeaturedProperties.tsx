@@ -24,7 +24,7 @@ export const FeaturedProperties = async () => {
 				})}
 			</div>
 			<Link
-				className="inline-flex items-center justify-between gap-2 rounded-full bg-blue-600 px-2 py-2 text-lg text-white lg:px-6"
+				className="mt-3 inline-flex items-center justify-between gap-2 rounded-full bg-blue-600 px-3 py-2 text-base text-white lg:mt-0 lg:px-6 lg:text-lg"
 				href="/buy"
 			>
 				Zobacz więcej

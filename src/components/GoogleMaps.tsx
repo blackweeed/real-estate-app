@@ -17,7 +17,6 @@ export const GoogleMaps: NextPage<GoogleMapsProps> = ({ longitude, latitude }) =
 		() => ({
 			disableDefaultUI: true,
 			clickableIcons: true,
-			scrollwheel: true,
 		}),
 		[],
 	);

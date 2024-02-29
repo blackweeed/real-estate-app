@@ -5,6 +5,9 @@ import { Suspense } from "react";
 import { type Metadata } from "next";
 import { ActiveListings } from "@/components/ActiveListings";
 import { getSingleAgentBySlug } from "@/api/agents";
+import { Breadcrumb } from "@/components/Breadcrumb";
+import { link } from "fs";
+import { Description } from "@/components/Description";
 
 type AgentPageProps = {
 	params: { agentSlug: string };
@@ -26,19 +29,7 @@ export default async function SingleAgentPage({ params }: AgentPageProps) {
 
 	return (
 		<section className="mt-32 px-6 lg:px-20">
-			<nav className="my-6 font-medium">
-				<ul className="flex items-center gap-2 text-sm lg:gap-4 lg:text-base">
-					<Link className="text-blue-600" href={"/"}>
-						Strona Główna
-					</Link>
-					<ChevronRight size={18} />
-					<Link className="text-blue-600" href={"/agents"}>
-						Agenci
-					</Link>
-					<ChevronRight size={18} />
-					<li className="font-normal">{agent?.title}</li>
-				</ul>
-			</nav>{" "}
+			<Breadcrumb title={agent?.title ?? ""} previousPage={{ link: "/agents", title: "Agenci" }} />
 			<div className="flex flex-col lg:flex-row">
 				<aside className="flex-1">
 					<div className="relative mb-6 h-[400px] overflow-hidden rounded-lg lg:mb-0 lg:h-[650px] lg:w-[500px]">
@@ -67,13 +58,7 @@ export default async function SingleAgentPage({ params }: AgentPageProps) {
 					<button className="my-6 flex items-center gap-4 rounded-full bg-blue-600 px-6 py-2.5 text-white">
 						Contact agent <ChevronRight />
 					</button>
-					<p
-						dangerouslySetInnerHTML={{
-							__html: agent?.agents?.agentsDescription ?? "",
-						}}
-					>
-						{}
-					</p>
+					<Description description={agent?.agents?.agentsDescription ?? ""} />
 				</main>
 			</div>
 			<Suspense>
