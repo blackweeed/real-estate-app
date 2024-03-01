@@ -1,5 +1,10 @@
 import { executeGraphql } from "./graphqlApi";
-import { SearchFormDocument, SubmitFormDocument } from "@/gql/graphql";
+import {
+	SearchFormDocument,
+	SubmitFormDocument,
+	UserSignInDocument,
+	UserSignUpDocument,
+} from "@/gql/graphql";
 
 export async function SubmitContactForm(
 	first_name: string,
@@ -28,4 +33,26 @@ export async function SearchForm(buyOrLease: string, query: string) {
 		},
 	});
 	return graphqlResponse.properties?.nodes;
+}
+
+export async function SignUpForm(
+	username: string,
+	email: string,
+	firstName: string,
+	lastName: string,
+	password: string,
+) {
+	const graphqlResponse = await executeGraphql({
+		query: UserSignUpDocument,
+		variables: { username, email, firstName, lastName, password },
+	});
+	return graphqlResponse.registerUser?.user?.databaseId;
+}
+
+export async function SignInForm(userName: string, password: string) {
+	const graphqlResponse = await executeGraphql({
+		query: UserSignInDocument,
+		variables: { userName, password },
+	});
+	return graphqlResponse;
 }

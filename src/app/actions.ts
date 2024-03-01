@@ -1,5 +1,6 @@
 "use server";
-import { SubmitContactForm } from "@/api/forms";
+import axios, { AxiosError } from "axios";
+import { SignInForm, SignUpForm, SubmitContactForm } from "@/api/forms";
 
 export async function submitForm(
 	prevState: {
@@ -40,3 +41,49 @@ export async function submitForm(
 		message: "Unknown response",
 	};
 }
+
+export const createAccount = async (formData: FormData) => {
+	"use server";
+
+	const username = formData.get("username");
+	const firstName = formData.get("firstName");
+	const lastName = formData.get("lastName");
+	const email = formData.get("email");
+	const password = formData.get("password");
+
+	const response = await SignUpForm(username, email, firstName, lastName, password);
+
+	console.log({ username, email, firstName, lastName, password });
+	return response;
+};
+
+export const loginUser = async (formData: FormData) => {
+	"use server";
+
+	const userName = formData.get("username");
+	const password = formData.get("password");
+
+	const response = await SignInForm(userName, password);
+
+	const payload = {
+		username: userName,
+		password: password,
+	};
+
+	try {
+		const { data } = await axios.post("/api/auth/login", payload);
+
+		alert(JSON.stringify(data));
+
+		// redirect the user to /dashboard
+		// push("/dashboard");
+		console.log("HURARAR");
+	} catch (e) {
+		const error = e as AxiosError;
+
+		alert(error.message);
+	}
+
+	console.log({ userName, password, response });
+	return response;
+};
