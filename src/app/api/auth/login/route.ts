@@ -13,8 +13,6 @@ export async function POST(request: Request) {
 
 	const loginData = await SignInForm(username, password);
 
-	console.log("loginData", loginData);
-
 	// if (username !== "admin" || password !== "admin") {
 	// 	return NextResponse.json(
 	// 		{

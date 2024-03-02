@@ -1,4 +1,4 @@
-import { FeaturedProperties } from "../components/FeaturedProperties";
+import { FeaturedProperties } from "@/components/FeaturedProperties";
 import { GetInTouch } from "@/components/GetInTouch";
 import { Hero } from "@/components/Hero";
 
