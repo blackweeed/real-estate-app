@@ -1,5 +1,5 @@
 import { type Metadata } from "next";
-import { getSinglePropertieBySlug } from "@/api/properties";
+import { getPropertiesList, getSinglePropertieBySlug } from "@/api/properties";
 import { Agent } from "@/components/Agent";
 import { GoogleMaps } from "@/components/GoogleMaps";
 import { GetInTouch } from "@/components/GetInTouch";
@@ -7,6 +7,7 @@ import { formatDate, formatPrice } from "@/app/utils";
 import { ImageGallery } from "@/components/ImageGallery";
 import { Description } from "@/components/Description";
 import { Breadcrumb } from "@/components/Breadcrumb";
+import { Propertie } from "@/components/Propertie";
 
 type PropertiePageProps = {
 	params: { propertieName: string };
@@ -25,6 +26,7 @@ export async function generateMetadata({ params }: PropertiePageProps): Promise<
 
 export default async function ProperitePage({ params }: PropertiePageProps) {
 	const propertie = await getSinglePropertieBySlug(params.propertieName);
+	const properites = await getPropertiesList();
 
 	return (
 		<main className="mt-32 px-6 lg:px-20">
@@ -95,6 +97,14 @@ export default async function ProperitePage({ params }: PropertiePageProps) {
 				latitude={propertie?.propertieFields?.map?.latitude ?? 0}
 				longitude={propertie?.propertieFields?.map?.longitude ?? 0}
 			/>
+			<section className="py-10">
+				<h2 className="mb-6 text-3xl font-semibold text-blue-600 lg:text-4xl">Więcej ofert</h2>
+				<div className="grid grid-cols-1 gap-12 lg:grid-cols-3">
+					{properites
+						?.slice(0, 3)
+						.map((propertie) => <Propertie key={propertie.slug} slug={propertie.slug ?? ""} />)}
+				</div>
+			</section>
 			<GetInTouch />
 		</main>
 	);
