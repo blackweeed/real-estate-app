@@ -1,6 +1,6 @@
 "use server";
-import axios, { AxiosError } from "axios";
 import { SignInForm, SignUpForm, SubmitContactForm } from "@/api/forms";
+import { cookies } from "next/headers";
 
 export async function submitForm(
 	prevState: {
@@ -65,25 +65,5 @@ export const loginUser = async (formData: FormData) => {
 
 	const response = await SignInForm(userName, password);
 
-	const payload = {
-		username: userName,
-		password: password,
-	};
-
-	try {
-		const { data } = await axios.post("/api/auth/login", payload);
-
-		alert(JSON.stringify(data));
-
-		// redirect the user to /dashboard
-		// push("/dashboard");
-		console.log("HURARAR");
-	} catch (e) {
-		const error = e as AxiosError;
-
-		alert(error.message);
-	}
-
-	console.log({ userName, password, response });
 	return response;
 };

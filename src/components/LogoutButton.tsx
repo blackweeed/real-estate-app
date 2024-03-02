@@ -1,0 +1,15 @@
+import { cookies } from "next/headers";
+
+export const LogoutButton = () => {
+	async function logout() {
+		"use server";
+		cookies().delete("OurSiteJWT");
+		console.log("wylogowano");
+	}
+
+	return (
+		<form action={logout}>
+			<button>WYLOGUJ</button>;
+		</form>
+	);
+};

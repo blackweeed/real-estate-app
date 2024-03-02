@@ -24,7 +24,8 @@ const documents = {
     "query PropertieGetbySlug($ProperiteID: ID!) {\n  propertie(id: $ProperiteID, idType: SLUG) {\n    modified\n    date\n    title\n    ...PropertieDetails\n  }\n}": types.PropertieGetbySlugDocument,
     "query SearchForm($query: String!, $buyOrLease: String!) {\n  properties(where: {buyOrLease: $buyOrLease, search: $query}) {\n    nodes {\n      title\n      slug\n      propertieFields {\n        price\n        map {\n          city\n          streetName\n          postCode\n        }\n      }\n      featuredImage {\n        node {\n          mediaItemUrl\n        }\n      }\n    }\n  }\n}": types.SearchFormDocument,
     "mutation SubmitForm($FirstName: String!, $SecondName: String!, $PhoneNumber: String!, $Comments: String!) {\n  submitGfForm(\n    input: {id: 1, fieldValues: [{id: 5, nameValues: {first: $FirstName, last: $SecondName}}, {id: 7, value: $PhoneNumber}, {id: 8, value: $Comments}]}\n  ) {\n    errors {\n      message\n      id\n    }\n    confirmation {\n      message\n    }\n  }\n}": types.SubmitFormDocument,
-    "mutation UserSignIn($userName: String!, $password: String!) {\n  login(input: {username: $userName, password: $password}) {\n    authToken\n    user {\n      id\n      name\n      email\n    }\n  }\n}": types.UserSignInDocument,
+    "query UserGet {\n  viewer {\n    firstName\n    lastName\n    email\n  }\n}": types.UserGetDocument,
+    "mutation UserSignIn($userName: String!, $password: String!) {\n  login(input: {username: $userName, password: $password}) {\n    authToken\n    user {\n      id\n      name\n      email\n      jwtAuthToken\n    }\n  }\n}": types.UserSignInDocument,
     "mutation UserSignUp($username: String!, $email: String!, $firstName: String!, $lastName: String!, $password: String!) {\n  registerUser(\n    input: {username: $username, email: $email, firstName: $firstName, lastName: $lastName, password: $password}\n  ) {\n    user {\n      databaseId\n    }\n  }\n}": types.UserSignUpDocument,
 };
 
@@ -71,7 +72,11 @@ export function graphql(source: "mutation SubmitForm($FirstName: String!, $Secon
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function graphql(source: "mutation UserSignIn($userName: String!, $password: String!) {\n  login(input: {username: $userName, password: $password}) {\n    authToken\n    user {\n      id\n      name\n      email\n    }\n  }\n}"): typeof import('./graphql').UserSignInDocument;
+export function graphql(source: "query UserGet {\n  viewer {\n    firstName\n    lastName\n    email\n  }\n}"): typeof import('./graphql').UserGetDocument;
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(source: "mutation UserSignIn($userName: String!, $password: String!) {\n  login(input: {username: $userName, password: $password}) {\n    authToken\n    user {\n      id\n      name\n      email\n      jwtAuthToken\n    }\n  }\n}"): typeof import('./graphql').UserSignInDocument;
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */

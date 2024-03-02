@@ -18794,13 +18794,18 @@ export type SubmitFormMutationVariables = Exact<{
 
 export type SubmitFormMutation = { submitGfForm?: { errors?: Array<{ message?: string | null, id?: number | null } | null> | null, confirmation?: { message?: string | null } | null } | null };
 
+export type UserGetQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type UserGetQuery = { viewer?: { firstName?: string | null, lastName?: string | null, email?: string | null } | null };
+
 export type UserSignInMutationVariables = Exact<{
   userName: Scalars['String']['input'];
   password: Scalars['String']['input'];
 }>;
 
 
-export type UserSignInMutation = { login?: { authToken?: string | null, user?: { id: string, name?: string | null, email?: string | null } | null } | null };
+export type UserSignInMutation = { login?: { authToken?: string | null, user?: { id: string, name?: string | null, email?: string | null, jwtAuthToken?: string | null } | null } | null };
 
 export type UserSignUpMutationVariables = Exact<{
   username: Scalars['String']['input'];
@@ -19095,6 +19100,15 @@ export const SubmitFormDocument = new TypedDocumentString(`
   }
 }
     `) as unknown as TypedDocumentString<SubmitFormMutation, SubmitFormMutationVariables>;
+export const UserGetDocument = new TypedDocumentString(`
+    query UserGet {
+  viewer {
+    firstName
+    lastName
+    email
+  }
+}
+    `) as unknown as TypedDocumentString<UserGetQuery, UserGetQueryVariables>;
 export const UserSignInDocument = new TypedDocumentString(`
     mutation UserSignIn($userName: String!, $password: String!) {
   login(input: {username: $userName, password: $password}) {
@@ -19103,6 +19117,7 @@ export const UserSignInDocument = new TypedDocumentString(`
       id
       name
       email
+      jwtAuthToken
     }
   }
 }

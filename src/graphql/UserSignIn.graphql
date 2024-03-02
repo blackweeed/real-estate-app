@@ -1,10 +1,12 @@
 mutation UserSignIn($userName: String!, $password: String!) {
 	login(input: { username: $userName, password: $password }) {
 		authToken
+
 		user {
 			id
 			name
 			email
+			jwtAuthToken
 		}
 	}
 }
