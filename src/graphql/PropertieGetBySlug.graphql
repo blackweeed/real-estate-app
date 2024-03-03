@@ -2,6 +2,7 @@ query PropertieGetbySlug($ProperiteID: ID!) {
 	propertie(id: $ProperiteID, idType: SLUG) {
 		modified
 		date
+		id
 		title
 		...PropertieDetails
 	}

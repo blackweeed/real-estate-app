@@ -22,10 +22,10 @@ export const Menu = ({ setToggle }: MenuProps) => {
 				<Logo setToggle={setToggle} />
 				<div className="flex items-center gap-5">
 					<button className="hidden w-56 items-center rounded-full border-[1.7px] bg-white px-6 py-2.5 font-semibold text-blue-600 lg:flex">
-						<span className="w-36">1-887-SERHANT </span> <Phone size={21} strokeWidth={2.5} />
+						<span className="w-36">+48 788 788 788 </span> <Phone size={21} strokeWidth={2.5} />
 					</button>
 					<button className="flex items-center rounded-full bg-blue-600 px-2.5 py-2.5 font-semibold text-white lg:w-56 lg:px-6">
-						<span className="hidden w-36 lg:block">Find a house</span>{" "}
+						<span className="hidden w-36 lg:block">Znajdź dom</span>{" "}
 						<Search size={21} strokeWidth={2.5} />
 					</button>
 					<button
@@ -43,7 +43,7 @@ export const Menu = ({ setToggle }: MenuProps) => {
 				</div>
 				<div className="mr-44 mt-4 flex flex-col justify-end gap-3 lg:mt-0 lg:flex-row lg:gap-8">
 					<button className="flex w-48 items-center rounded-full bg-blue-600 px-6 py-2.5 font-medium text-white">
-						<span className="w-36">Join us</span> <ChevronRight />
+						<span className="w-36">Dołącz do nas</span> <ChevronRight />
 					</button>
 					<button className="flex w-48 items-center rounded-full border bg-white px-6 py-2.5 font-medium text-blue-600">
 						<span className="w-36">Agent Login</span> <UnlockKeyhole />

@@ -124,6 +124,22 @@ export type AcfMediaItemConnectionPageInfo = MediaItemConnectionPageInfo & PageI
   startCursor?: Maybe<Scalars['String']['output']>;
 };
 
+/** Input for the addToFavorites mutation. */
+export type AddToFavoritesInput = {
+  /** This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
+  clientMutationId?: InputMaybe<Scalars['String']['input']>;
+  /** ID of the property to add to favorites */
+  propertyId?: InputMaybe<Scalars['String']['input']>;
+};
+
+/** The payload for the addToFavorites mutation. */
+export type AddToFavoritesPayload = {
+  /** If a &#039;clientMutationId&#039; input is provided to the mutation, it will be returned as output on the mutation. This ID can be used by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
+  clientMutationId?: Maybe<Scalars['String']['output']>;
+  /** Whether the property was added successfully */
+  success?: Maybe<Scalars['Boolean']['output']>;
+};
+
 /** A Gravity Forms address field. */
 export type AddressField = FormField & GfFieldWithAddressSetting & GfFieldWithAdminLabelSetting & GfFieldWithAutocompleteSetting & GfFieldWithConditionalLogicSetting & GfFieldWithCopyValuesOptionSetting & GfFieldWithCssClassSetting & GfFieldWithDescriptionSetting & GfFieldWithErrorMessageSetting & GfFieldWithInputs & GfFieldWithLabelPlacementSetting & GfFieldWithLabelSetting & GfFieldWithPersonalData & GfFieldWithPrepopulateFieldSetting & GfFieldWithRulesSetting & GfFieldWithSubLabelPlacementSetting & {
   /** Determines the type of address to be displayed. */
@@ -13389,6 +13405,8 @@ export type RestoreCommentPayload = {
 
 /** The root mutation */
 export type RootMutation = {
+  /** The addToFavorites mutation */
+  addToFavorites?: Maybe<AddToFavoritesPayload>;
   /** The createAgent mutation */
   createAgent?: Maybe<CreateAgentPayload>;
   /** The createCategory mutation */
@@ -13477,6 +13495,12 @@ export type RootMutation = {
   updateTag?: Maybe<UpdateTagPayload>;
   /** The updateUser mutation */
   updateUser?: Maybe<UpdateUserPayload>;
+};
+
+
+/** The root mutation */
+export type RootMutationAddToFavoritesArgs = {
+  input: AddToFavoritesInput;
 };
 
 
@@ -17857,6 +17881,8 @@ export type User = Commenter & DatabaseIdentifier & Node & UniformResourceIdenti
   enqueuedStylesheets?: Maybe<UserToEnqueuedStylesheetConnection>;
   /** A complete list of capabilities including capabilities inherited from a role. This is equivalent to the array keys of WP_User-&gt;allcaps. */
   extraCapabilities?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  /** Returns a list of favorite property IDs */
+  favorites?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
   /** First name of the user. This is equivalent to the WP_User-&gt;user_first_name property. */
   firstName?: Maybe<Scalars['String']['output']>;
   /** The globally unique identifier for the user object. */
@@ -18774,7 +18800,7 @@ export type PropertieGetbySlugQueryVariables = Exact<{
 }>;
 
 
-export type PropertieGetbySlugQuery = { propertie?: { modified?: string | null, date?: string | null, title?: string | null, propertieFields?: { area?: number | null, price?: number | null, propertyDescription?: string | null, numberOfRooms?: number | null, numberOfBeds?: number | null, numberOfBathrooms?: string | null, buyOrLease?: Array<string | null> | null, typeOfDevelopment?: string | null, map?: { city?: string | null, country?: string | null, postCode?: string | null, streetName?: string | null, placeId?: string | null, longitude?: number | null, latitude?: number | null, state?: string | null, streetAddress?: string | null } | null, relationWithProperties?: { nodes: Array<{ slug?: string | null } | { slug?: string | null } | { slug?: string | null } | { slug?: string | null } | { slug?: string | null }> } | null, images?: { nodes: Array<{ mediaItemUrl?: string | null }> } | null } | null } | null };
+export type PropertieGetbySlugQuery = { propertie?: { modified?: string | null, date?: string | null, id: string, title?: string | null, propertieFields?: { area?: number | null, price?: number | null, propertyDescription?: string | null, numberOfRooms?: number | null, numberOfBeds?: number | null, numberOfBathrooms?: string | null, buyOrLease?: Array<string | null> | null, typeOfDevelopment?: string | null, map?: { city?: string | null, country?: string | null, postCode?: string | null, streetName?: string | null, placeId?: string | null, longitude?: number | null, latitude?: number | null, state?: string | null, streetAddress?: string | null } | null, relationWithProperties?: { nodes: Array<{ slug?: string | null } | { slug?: string | null } | { slug?: string | null } | { slug?: string | null } | { slug?: string | null }> } | null, images?: { nodes: Array<{ mediaItemUrl?: string | null }> } | null } | null } | null };
 
 export type SearchFormQueryVariables = Exact<{
   query: Scalars['String']['input'];
@@ -18797,7 +18823,7 @@ export type SubmitFormMutation = { submitGfForm?: { errors?: Array<{ message?: s
 export type UserGetQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type UserGetQuery = { viewer?: { firstName?: string | null, lastName?: string | null, email?: string | null } | null };
+export type UserGetQuery = { viewer?: { firstName?: string | null, lastName?: string | null, email?: string | null, id: string } | null };
 
 export type UserSignInMutationVariables = Exact<{
   userName: Scalars['String']['input'];
@@ -18817,6 +18843,20 @@ export type UserSignUpMutationVariables = Exact<{
 
 
 export type UserSignUpMutation = { registerUser?: { user?: { databaseId: number } | null } | null };
+
+export type WishListAddToMutationVariables = Exact<{
+  propertyId: Scalars['String']['input'];
+}>;
+
+
+export type WishListAddToMutation = { addToFavorites?: { success?: boolean | null } | null };
+
+export type GetUserFavoritesQueryVariables = Exact<{
+  ID: Scalars['ID']['input'];
+}>;
+
+
+export type GetUserFavoritesQuery = { user?: { favorites?: Array<string | null> | null } | null };
 
 export class TypedDocumentString<TResult, TVariables>
   extends String
@@ -19025,6 +19065,7 @@ export const PropertieGetbySlugDocument = new TypedDocumentString(`
   propertie(id: $ProperiteID, idType: SLUG) {
     modified
     date
+    id
     title
     ...PropertieDetails
   }
@@ -19106,6 +19147,7 @@ export const UserGetDocument = new TypedDocumentString(`
     firstName
     lastName
     email
+    id
   }
 }
     `) as unknown as TypedDocumentString<UserGetQuery, UserGetQueryVariables>;
@@ -19133,3 +19175,17 @@ export const UserSignUpDocument = new TypedDocumentString(`
   }
 }
     `) as unknown as TypedDocumentString<UserSignUpMutation, UserSignUpMutationVariables>;
+export const WishListAddToDocument = new TypedDocumentString(`
+    mutation WishListAddTo($propertyId: String!) {
+  addToFavorites(input: {propertyId: $propertyId}) {
+    success
+  }
+}
+    `) as unknown as TypedDocumentString<WishListAddToMutation, WishListAddToMutationVariables>;
+export const GetUserFavoritesDocument = new TypedDocumentString(`
+    query GetUserFavorites($ID: ID!) {
+  user(id: $ID) {
+    favorites
+  }
+}
+    `) as unknown as TypedDocumentString<GetUserFavoritesQuery, GetUserFavoritesQueryVariables>;

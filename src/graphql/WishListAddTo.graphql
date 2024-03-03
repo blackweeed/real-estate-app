@@ -1,0 +1,5 @@
+mutation WishListAddTo($propertyId: String!) {
+	addToFavorites(input: { propertyId: $propertyId }) {
+		success
+	}
+}

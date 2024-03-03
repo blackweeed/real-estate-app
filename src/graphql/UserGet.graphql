@@ -3,5 +3,6 @@ query UserGet {
 		firstName
 		lastName
 		email
+		id
 	}
 }

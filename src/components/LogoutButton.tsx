@@ -9,7 +9,7 @@ export const LogoutButton = () => {
 
 	return (
 		<form action={logout}>
-			<button>WYLOGUJ</button>;
+			<button className="ml-10 rounded-full border px-4 py-2">WYLOGUJ</button>
 		</form>
 	);
 };

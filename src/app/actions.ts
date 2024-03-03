@@ -1,5 +1,6 @@
 "use server";
 import { SignInForm, SignUpForm, SubmitContactForm } from "@/api/forms";
+import { addtoWishList } from "@/api/wishlist";
 import { cookies } from "next/headers";
 
 export async function submitForm(
@@ -66,4 +67,12 @@ export const loginUser = async (formData: FormData) => {
 	const response = await SignInForm(userName, password);
 
 	return response;
+};
+
+export const addToWishList = async (propertieId: string, token: string) => {
+	"use server";
+	const response = await addtoWishList(propertieId, token);
+
+	return response;
+	console.log("dodano do listy");
 };
