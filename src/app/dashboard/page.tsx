@@ -6,6 +6,9 @@ import { getCurrentUser } from "@/api/user";
 import { Propertie } from "@/components/Propertie";
 import { getWishList } from "@/api/wishlist";
 import { refreshToken } from "@/api/token";
+import { Navbar } from "@/components/Navbar";
+import { Button } from "@/components/Button";
+import { ToggleAgentMenuButton } from "@/components/ToggleAgentMenuButton";
 
 export const metadata: Metadata = {
 	title: "Panel użytkownika",
@@ -63,7 +66,11 @@ export default async function Dashboard() {
 
 	return (
 		<div className="flex h-screen w-full flex-col items-center justify-center gap-2 bg-gray-50">
-			BRAK DOSTĘPU
+			<Navbar />
+			<Button
+				text="Zaloguj się"
+				className="cursor-pointer rounded-full bg-blue-600 p-1 px-6 text-lg font-medium text-white transition hover:scale-110 hover:opacity-70"
+			/>
 		</div>
 	);
 }

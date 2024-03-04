@@ -10,7 +10,7 @@ type UserLoginMenuProps = {
 };
 
 export const UserLoginMenu = ({ setToggleUserMenu }: UserLoginMenuProps) => {
-	const [toggle, setToggle] = useState("register");
+	const [toggle, setToggle] = useState("login");
 	useEffect(() => {
 		disableScroll();
 

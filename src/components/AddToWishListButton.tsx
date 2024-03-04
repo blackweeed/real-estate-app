@@ -19,7 +19,7 @@ export const AddtoWishListButton = ({
 					const res = await handleWishList(propertyId, token, isFavorite);
 					alert(res);
 				} catch (error) {
-					alert("Błąd aktualizacji listy życzeń");
+					alert("Musisz być zalogowany aby dodawać do listy życzeń");
 					console.log(error);
 				}
 			}}
