@@ -1,5 +1,5 @@
 import { Heart } from "lucide-react";
-import { addToWishList } from "@/app/actions";
+import { handleWishList } from "@/app/actions";
 
 export const AddtoWishListButton = ({
 	propertyId,
@@ -16,14 +16,11 @@ export const AddtoWishListButton = ({
 			onClick={async (e) => {
 				e.preventDefault();
 				try {
-					// Call your async action here
-					await addToWishList(propertyId, token);
-					alert("dodano");
-
-					// Handle success here
+					const res = await handleWishList(propertyId, token, isFavorite);
+					alert(res);
 				} catch (error) {
-					// Handle error here
-					alert("Error adding to wishlist");
+					alert("Błąd aktualizacji listy życzeń");
+					console.log(error);
 				}
 			}}
 		>

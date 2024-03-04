@@ -18,9 +18,7 @@ export const Hero = ({ query, transactionType }: { query: string; transactionTyp
 				>
 					Z nami to proste!
 				</h2>
-				<div className="relative w-[92%] px-2 lg:w-[60%]">
-					<SearchBar query={query} transactionType={transactionType} />
-				</div>
+				<SearchBar query={query} transactionType={transactionType} />
 			</div>
 			<div
 				className="absolute z-10 h-full w-full"

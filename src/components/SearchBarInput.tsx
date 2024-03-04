@@ -20,12 +20,16 @@ export const SearchBarInput = ({ transactionType }: { transactionType: string })
 		replace(`${pathname}?${params.toString()}`);
 	};
 	return (
-		<input
-			onChange={(e) => handleSearch(e.target.value)}
-			defaultValue={searchParams.get("query")?.toString()}
-			type="text"
-			placeholder="Szukaj"
-			className="w-full py-2.5 text-sm outline-none"
-		/>
+		<div className="flex h-full w-full gap-8 py-1.5">
+			<input
+				onChange={(e) => handleSearch(e.target.value)}
+				defaultValue={searchParams.get("query")?.toString()}
+				type="text"
+				className="w-full text-sm outline-none"
+			/>
+			<button className="h-full w-32 rounded-md bg-gradient-to-r from-blue-500 to-blue-600 px-4 font-medium tracking-wide text-white transition-transform hover:scale-105">
+				Szukaj
+			</button>
+		</div>
 	);
 };

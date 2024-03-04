@@ -2,11 +2,10 @@
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
-import { AddtoWishListButton } from "./AddToWishListButton";
 import Image from "next/image";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useRef } from "react";
-import { addtoWishList } from "@/api/wishlist";
+import { AddtoWishListButton } from "./AddToWishListButton";
 
 interface MediaItem {
 	mediaItemUrl: string;
@@ -17,12 +16,14 @@ type PropertieWithSliderProps = {
 	images: MediaItem[];
 	id: string;
 	token: string;
+	isFavorite: boolean;
 };
 export const PropertieWithSlider = ({
 	buyOrLease,
 	images,
 	id,
 	token,
+	isFavorite,
 }: PropertieWithSliderProps) => {
 	const swiperRef = useRef(null);
 
@@ -31,7 +32,7 @@ export const PropertieWithSlider = ({
 			<div className="absolute left-3 top-3 z-20 flex h-8 w-fit items-center justify-center rounded-md bg-white/60 px-2 font-semibold uppercase text-blue-600">
 				{buyOrLease}
 			</div>
-			<AddtoWishListButton isFavorite={false} propertyId={id} token={token} />
+			<AddtoWishListButton isFavorite={isFavorite} propertyId={id} token={token} />
 			<Swiper
 				className="h-full w-full"
 				spaceBetween={0}

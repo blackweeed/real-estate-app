@@ -5,6 +5,7 @@ import { Mail, Pencil, Phone } from "lucide-react";
 import { getCurrentUser } from "@/api/user";
 import { Propertie } from "@/components/Propertie";
 import { getWishList } from "@/api/wishlist";
+import { refreshToken } from "@/api/token";
 
 export const metadata: Metadata = {
 	title: "Panel użytkownika",
@@ -16,8 +17,9 @@ export default async function Dashboard() {
 	const cookieStore = cookies();
 	const res = cookieStore.get("OurSiteJWT");
 	const token = res?.value;
+	const currentToken = await refreshToken(token);
 
-	if (token) {
+	if (currentToken) {
 		const user = await getCurrentUser(token);
 		const favorites = await getWishList(user?.id, token);
 		return (

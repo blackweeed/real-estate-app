@@ -1,7 +1,7 @@
 "use server";
+import { revalidateTag } from "next/cache";
 import { SignInForm, SignUpForm, SubmitContactForm } from "@/api/forms";
-import { addtoWishList } from "@/api/wishlist";
-import { cookies } from "next/headers";
+import { addtoWishList, deleteFromWishlist } from "@/api/wishlist";
 
 export async function submitForm(
 	prevState: {
@@ -69,10 +69,17 @@ export const loginUser = async (formData: FormData) => {
 	return response;
 };
 
-export const addToWishList = async (propertieId: string, token: string) => {
+export const handleWishList = async (propertieId: string, token: string, isFavorite: boolean) => {
 	"use server";
-	const response = await addtoWishList(propertieId, token);
-
-	return response;
-	console.log("dodano do listy");
+	if (isFavorite) {
+		await deleteFromWishlist(propertieId, token);
+		console.log("usunięto");
+		revalidateTag("wishlist");
+		return "usunięto";
+	} else {
+		await addtoWishList(propertieId, token);
+		console.log("dodano");
+		revalidateTag("wishlist");
+		return "dodano";
+	}
 };

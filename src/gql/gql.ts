@@ -22,6 +22,7 @@ const documents = {
     "query GetPropertiesListPaginated {\n  properties {\n    nodes {\n      slug\n      propertieFields {\n        map {\n          city\n          streetName\n          streetNumber\n          postCode\n          country\n          state\n        }\n        area\n        price\n        numberOfRooms\n        numberOfBeds\n        buyOrLease\n        images {\n          nodes {\n            mediaItemUrl\n          }\n        }\n      }\n    }\n  }\n}": types.GetPropertiesListPaginatedDocument,
     "fragment PropertieDetails on WithAcfPropertieFields {\n  propertieFields {\n    map {\n      city\n      country\n      postCode\n      streetName\n      placeId\n      longitude\n      latitude\n      state\n      streetAddress\n    }\n    area\n    price\n    propertyDescription\n    numberOfRooms\n    numberOfBeds\n    numberOfBathrooms\n    buyOrLease\n    typeOfDevelopment\n    relationWithProperties {\n      nodes {\n        slug\n      }\n    }\n    images {\n      nodes {\n        mediaItemUrl\n      }\n    }\n  }\n}": types.PropertieDetailsFragmentDoc,
     "query PropertieGetbySlug($ProperiteID: ID!) {\n  propertie(id: $ProperiteID, idType: SLUG) {\n    modified\n    date\n    id\n    title\n    ...PropertieDetails\n  }\n}": types.PropertieGetbySlugDocument,
+    "mutation RefreshAuthToken($token: String!) {\n  refreshJwtAuthToken(input: {jwtRefreshToken: $token}) {\n    authToken\n  }\n}": types.RefreshAuthTokenDocument,
     "query SearchForm($query: String!, $buyOrLease: String!) {\n  properties(where: {buyOrLease: $buyOrLease, search: $query}) {\n    nodes {\n      title\n      slug\n      propertieFields {\n        price\n        map {\n          city\n          streetName\n          postCode\n        }\n      }\n      featuredImage {\n        node {\n          mediaItemUrl\n        }\n      }\n    }\n  }\n}": types.SearchFormDocument,
     "mutation SubmitForm($FirstName: String!, $SecondName: String!, $PhoneNumber: String!, $Comments: String!) {\n  submitGfForm(\n    input: {id: 1, fieldValues: [{id: 5, nameValues: {first: $FirstName, last: $SecondName}}, {id: 7, value: $PhoneNumber}, {id: 8, value: $Comments}]}\n  ) {\n    errors {\n      message\n      id\n    }\n    confirmation {\n      message\n    }\n  }\n}": types.SubmitFormDocument,
     "query UserGet {\n  viewer {\n    firstName\n    lastName\n    email\n    id\n  }\n}": types.UserGetDocument,
@@ -29,6 +30,7 @@ const documents = {
     "mutation UserSignUp($username: String!, $email: String!, $firstName: String!, $lastName: String!, $password: String!) {\n  registerUser(\n    input: {username: $username, email: $email, firstName: $firstName, lastName: $lastName, password: $password}\n  ) {\n    user {\n      databaseId\n    }\n  }\n}": types.UserSignUpDocument,
     "mutation WishListAddTo($propertyId: String!) {\n  addToFavorites(input: {propertyId: $propertyId}) {\n    success\n  }\n}": types.WishListAddToDocument,
     "query GetUserFavorites($ID: ID!) {\n  user(id: $ID) {\n    favorites\n  }\n}": types.GetUserFavoritesDocument,
+    "mutation WishListDelete($propertyId: String!) {\n  removeFromFavorites(input: {propertyId: $propertyId}) {\n    success\n  }\n}": types.WishListDeleteDocument,
 };
 
 /**
@@ -66,6 +68,10 @@ export function graphql(source: "query PropertieGetbySlug($ProperiteID: ID!) {\n
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
+export function graphql(source: "mutation RefreshAuthToken($token: String!) {\n  refreshJwtAuthToken(input: {jwtRefreshToken: $token}) {\n    authToken\n  }\n}"): typeof import('./graphql').RefreshAuthTokenDocument;
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
 export function graphql(source: "query SearchForm($query: String!, $buyOrLease: String!) {\n  properties(where: {buyOrLease: $buyOrLease, search: $query}) {\n    nodes {\n      title\n      slug\n      propertieFields {\n        price\n        map {\n          city\n          streetName\n          postCode\n        }\n      }\n      featuredImage {\n        node {\n          mediaItemUrl\n        }\n      }\n    }\n  }\n}"): typeof import('./graphql').SearchFormDocument;
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
@@ -91,6 +97,10 @@ export function graphql(source: "mutation WishListAddTo($propertyId: String!) {\
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
 export function graphql(source: "query GetUserFavorites($ID: ID!) {\n  user(id: $ID) {\n    favorites\n  }\n}"): typeof import('./graphql').GetUserFavoritesDocument;
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(source: "mutation WishListDelete($propertyId: String!) {\n  removeFromFavorites(input: {propertyId: $propertyId}) {\n    success\n  }\n}"): typeof import('./graphql').WishListDeleteDocument;
 
 
 export function graphql(source: string) {

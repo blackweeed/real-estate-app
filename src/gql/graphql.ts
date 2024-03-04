@@ -13365,6 +13365,22 @@ export type RelationEnum =
   /** The logical OR condition returns false if both operands are false, otherwise, it returns true. */
   | 'OR';
 
+/** Input for the removeFromFavorites mutation. */
+export type RemoveFromFavoritesInput = {
+  /** This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
+  clientMutationId?: InputMaybe<Scalars['String']['input']>;
+  /** ID of the property to remove from favorites */
+  propertyId?: InputMaybe<Scalars['String']['input']>;
+};
+
+/** The payload for the removeFromFavorites mutation. */
+export type RemoveFromFavoritesPayload = {
+  /** If a &#039;clientMutationId&#039; input is provided to the mutation, it will be returned as output on the mutation. This ID can be used by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
+  clientMutationId?: Maybe<Scalars['String']['output']>;
+  /** Whether the property was removed successfully */
+  success?: Maybe<Scalars['Boolean']['output']>;
+};
+
 /** Input for the resetUserPassword mutation. */
 export type ResetUserPasswordInput = {
   /** This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
@@ -13459,6 +13475,8 @@ export type RootMutation = {
   refreshJwtAuthToken?: Maybe<RefreshJwtAuthTokenPayload>;
   /** The registerUser mutation */
   registerUser?: Maybe<RegisterUserPayload>;
+  /** The removeFromFavorites mutation */
+  removeFromFavorites?: Maybe<RemoveFromFavoritesPayload>;
   /** The resetUserPassword mutation */
   resetUserPassword?: Maybe<ResetUserPasswordPayload>;
   /** The restoreComment mutation */
@@ -13657,6 +13675,12 @@ export type RootMutationRefreshJwtAuthTokenArgs = {
 /** The root mutation */
 export type RootMutationRegisterUserArgs = {
   input: RegisterUserInput;
+};
+
+
+/** The root mutation */
+export type RootMutationRemoveFromFavoritesArgs = {
+  input: RemoveFromFavoritesInput;
 };
 
 
@@ -18802,6 +18826,13 @@ export type PropertieGetbySlugQueryVariables = Exact<{
 
 export type PropertieGetbySlugQuery = { propertie?: { modified?: string | null, date?: string | null, id: string, title?: string | null, propertieFields?: { area?: number | null, price?: number | null, propertyDescription?: string | null, numberOfRooms?: number | null, numberOfBeds?: number | null, numberOfBathrooms?: string | null, buyOrLease?: Array<string | null> | null, typeOfDevelopment?: string | null, map?: { city?: string | null, country?: string | null, postCode?: string | null, streetName?: string | null, placeId?: string | null, longitude?: number | null, latitude?: number | null, state?: string | null, streetAddress?: string | null } | null, relationWithProperties?: { nodes: Array<{ slug?: string | null } | { slug?: string | null } | { slug?: string | null } | { slug?: string | null } | { slug?: string | null }> } | null, images?: { nodes: Array<{ mediaItemUrl?: string | null }> } | null } | null } | null };
 
+export type RefreshAuthTokenMutationVariables = Exact<{
+  token: Scalars['String']['input'];
+}>;
+
+
+export type RefreshAuthTokenMutation = { refreshJwtAuthToken?: { authToken?: string | null } | null };
+
 export type SearchFormQueryVariables = Exact<{
   query: Scalars['String']['input'];
   buyOrLease: Scalars['String']['input'];
@@ -18857,6 +18888,13 @@ export type GetUserFavoritesQueryVariables = Exact<{
 
 
 export type GetUserFavoritesQuery = { user?: { favorites?: Array<string | null> | null } | null };
+
+export type WishListDeleteMutationVariables = Exact<{
+  propertyId: Scalars['String']['input'];
+}>;
+
+
+export type WishListDeleteMutation = { removeFromFavorites?: { success?: boolean | null } | null };
 
 export class TypedDocumentString<TResult, TVariables>
   extends String
@@ -19103,6 +19141,13 @@ export const PropertieGetbySlugDocument = new TypedDocumentString(`
     }
   }
 }`) as unknown as TypedDocumentString<PropertieGetbySlugQuery, PropertieGetbySlugQueryVariables>;
+export const RefreshAuthTokenDocument = new TypedDocumentString(`
+    mutation RefreshAuthToken($token: String!) {
+  refreshJwtAuthToken(input: {jwtRefreshToken: $token}) {
+    authToken
+  }
+}
+    `) as unknown as TypedDocumentString<RefreshAuthTokenMutation, RefreshAuthTokenMutationVariables>;
 export const SearchFormDocument = new TypedDocumentString(`
     query SearchForm($query: String!, $buyOrLease: String!) {
   properties(where: {buyOrLease: $buyOrLease, search: $query}) {
@@ -19189,3 +19234,10 @@ export const GetUserFavoritesDocument = new TypedDocumentString(`
   }
 }
     `) as unknown as TypedDocumentString<GetUserFavoritesQuery, GetUserFavoritesQueryVariables>;
+export const WishListDeleteDocument = new TypedDocumentString(`
+    mutation WishListDelete($propertyId: String!) {
+  removeFromFavorites(input: {propertyId: $propertyId}) {
+    success
+  }
+}
+    `) as unknown as TypedDocumentString<WishListDeleteMutation, WishListDeleteMutationVariables>;

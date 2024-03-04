@@ -1,0 +1,5 @@
+mutation WishListDelete($propertyId: String!) {
+	removeFromFavorites(input: { propertyId: $propertyId }) {
+		success
+	}
+}

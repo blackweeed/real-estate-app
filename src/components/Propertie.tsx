@@ -5,18 +5,28 @@ import { PropertieWithSlider } from "./PropertieWithSlider";
 import { formatPrice } from "@/app/utils";
 import { getSinglePropertieBySlug } from "@/api/properties";
 import { getWishList } from "@/api/wishlist";
+import { getCurrentUser } from "@/api/user";
+import { refreshToken } from "@/api/token";
 
 export const Propertie = async ({ slug }: { slug: string }) => {
 	const propertie = await getSinglePropertieBySlug(slug);
 	const cookieStore = cookies();
 	const res = cookieStore.get("OurSiteJWT");
 	const token = res?.value;
-	// const user = await getCurrentUser(token);
-	// const favorites = await getWishList(user?.id, token);
+	const currentToken = await refreshToken(token);
+	const user = await getCurrentUser(currentToken);
+	const favorites = await getWishList(user?.id, currentToken);
+
+	function checkIfSlugInFavorites(slug: string, favorites: string[]) {
+		return favorites.some((favorite) => favorite === slug);
+	}
+
+	const isFavorite = checkIfSlugInFavorites(slug, favorites);
 
 	return (
 		<Link href={`/properties/${slug}`} className="h-[360px] w-full " key={propertie?.date}>
 			<PropertieWithSlider
+				isFavorite={isFavorite}
 				id={slug}
 				token={token}
 				buyOrLease={propertie?.propertieFields?.buyOrLease}
