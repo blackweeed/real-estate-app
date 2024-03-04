@@ -7,8 +7,9 @@ import { Logo } from "./Logo";
 import { ToggleMenuButton } from "./ToggleMenuButton";
 import { ToggleAgentMenuButton } from "./ToggleAgentMenuButton";
 import { ActiveLink } from "./ActiveLink";
+import { Avatar } from "./Avatar";
 
-export const Navbar = () => {
+export const Navbar = ({ isUser: isUserLoggin }: { isUser: boolean }) => {
 	const [prevScrollPos, setPrevScrollPos] = useState(0);
 	const [visible, setVisible] = useState(true);
 
@@ -46,7 +47,7 @@ export const Navbar = () => {
 							</ActiveLink>
 						))}
 					</div>
-					<ToggleAgentMenuButton />
+					{isUserLoggin ? <Avatar className="" /> : <ToggleAgentMenuButton />}
 					<Link
 						className="inline-flex items-center justify-between gap-2 rounded-full bg-blue-600 px-2 py-2 text-white lg:px-4"
 						href="/"

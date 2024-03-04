@@ -3,6 +3,7 @@ import { LogoutButton } from "./LogoutButton";
 import { Logo } from "./Logo";
 import { ActiveLink } from "./ActiveLink";
 import { getCurrentUser } from "@/api/user";
+import { Avatar } from "./Avatar";
 
 export const NavbarDashboard = async () => {
 	const links = [
@@ -33,7 +34,7 @@ export const NavbarDashboard = async () => {
 							))}
 						</div>
 						<div className="ml-2 flex items-center gap-2">
-							<div className="h-10 w-10 rounded-full bg-gray-200"></div>
+							<Avatar className="" />
 							<p>
 								{user?.firstName} {user?.lastName}
 							</p>

@@ -8,7 +8,7 @@ import { getWishList } from "@/api/wishlist";
 import { refreshToken } from "@/api/token";
 import { Navbar } from "@/components/Navbar";
 import { Button } from "@/components/Button";
-import { ToggleAgentMenuButton } from "@/components/ToggleAgentMenuButton";
+import { Avatar } from "@/components/Avatar";
 
 export const metadata: Metadata = {
 	title: "Panel użytkownika",
@@ -21,15 +21,15 @@ export default async function Dashboard() {
 	const res = cookieStore.get("OurSiteJWT");
 	const token = res?.value;
 	const currentToken = await refreshToken(token);
+	const user = await getCurrentUser(currentToken);
 
-	if (currentToken) {
-		const user = await getCurrentUser(token);
+	if (user) {
 		const favorites = await getWishList(user?.id, token);
 		return (
 			<div className="flex h-full w-full flex-col bg-gray-100 lg:flex-row">
 				<div className="top-16 h-full w-full  lg:sticky lg:w-[35%]">
 					<div className="mx-auto mb-10 mt-10 h-fit w-[90%] rounded-md bg-white p-6 lg:mb-0 ">
-						<div className="h-14 w-14 rounded-full bg-gray-200"></div>
+						<Avatar className="" />
 						<h2 className="mt-2 text-lg font-semibold">
 							{user?.firstName} {user?.lastName}
 						</h2>
@@ -41,10 +41,6 @@ export default async function Dashboard() {
 							<p className="mb-3 mt-2 flex items-center gap-2 text-sm font-medium">
 								<Mail size={20} />
 								{user?.email}
-							</p>
-							<p className="mb-3 mt-2 flex items-center gap-2 text-sm font-medium">
-								ID:
-								{user?.id}
 							</p>
 						</div>
 						<button className="mt-4 flex gap-2 rounded-full border px-4 py-2 text-center font-semibold">
@@ -66,7 +62,7 @@ export default async function Dashboard() {
 
 	return (
 		<div className="flex h-screen w-full flex-col items-center justify-center gap-2 bg-gray-50">
-			<Navbar />
+			<Navbar isUser={!(user === null)} />
 			<Button
 				text="Zaloguj się"
 				className="cursor-pointer rounded-full bg-blue-600 p-1 px-6 text-lg font-medium text-white transition hover:scale-110 hover:opacity-70"
