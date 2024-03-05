@@ -54,5 +54,6 @@ export async function SignInForm(userName: string, password: string) {
 		query: UserSignInDocument,
 		variables: { userName, password },
 	});
+
 	return graphqlResponse;
 }

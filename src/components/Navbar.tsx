@@ -8,31 +8,32 @@ import { ToggleMenuButton } from "./ToggleMenuButton";
 import { ToggleAgentMenuButton } from "./ToggleAgentMenuButton";
 import { ActiveLink } from "./ActiveLink";
 import { Avatar } from "./Avatar";
+import { links } from "@/app/constants";
 
 export const Navbar = ({ isUser: isUserLoggin }: { isUser: boolean }) => {
 	const [prevScrollPos, setPrevScrollPos] = useState(0);
 	const [visible, setVisible] = useState(true);
 
-	const links = [
-		{ href: "/buy", label: "Kup" },
-		{ href: "/rent", label: "Wynajmij" },
-		{ href: "/sell", label: "Sprzedaj" },
-		{ href: "/agents", label: "Agenci" },
-	];
-
 	useEffect(() => {
 		const handleScroll = () => {
 			const currentScrollPos = window.scrollY;
+			const isVisibleThreshold = 70;
 			const scrollingUp = prevScrollPos > currentScrollPos;
 
+			console.log(currentScrollPos);
+
+			if (currentScrollPos > isVisibleThreshold) {
+				setVisible(scrollingUp);
+			} else {
+				setVisible(true);
+			}
+
 			setPrevScrollPos(currentScrollPos);
-			setVisible(scrollingUp);
 		};
 
 		window.addEventListener("scroll", handleScroll);
 		return () => window.removeEventListener("scroll", handleScroll);
 	}, [prevScrollPos]);
-
 	return (
 		<nav
 			className={`${!visible && "hidden"} fixed left-0 right-0 top-0 z-40 mx-auto mt-4 w-[90%] rounded-full bg-white px-8 py-4 shadow-lg lg:px-20 `}

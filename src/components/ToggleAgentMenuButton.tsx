@@ -10,7 +10,7 @@ export const ToggleAgentMenuButton = () => {
 		<>
 			<button
 				onClick={() => setToggleUserMenu(true)}
-				className="hidden rounded-full border-2 p-2 lg:block"
+				className="rounded-full border-2 p-2 lg:block"
 			>
 				<User size={20} />
 			</button>

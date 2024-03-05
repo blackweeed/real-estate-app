@@ -14,7 +14,7 @@ export const SearchBar = async ({
 
 	return (
 		<div className="relative w-[80%] px-2 lg:w-[50%]">
-			<div className="mt-6 flex h-16 w-full items-center justify-between gap-4 rounded-md border-4 bg-white px-8 ">
+			<div className="mt-6 flex h-16 w-full items-center justify-between gap-2 rounded-md border-4 bg-white px-4 lg:px-8 ">
 				<svg
 					className="fill-blue-600"
 					stroke="currentColor"
@@ -33,7 +33,7 @@ export const SearchBar = async ({
 						clipRule="evenodd"
 					></path>
 				</svg>
-				<div className="relative z-[9999] ml-10 flex h-full w-full items-center justify-between rounded-lg">
+				<div className="relative z-[9999] flex h-full w-full items-center justify-between rounded-lg lg:ml-10">
 					<SearchBarInput transactionType={transactionType} />
 					{query && (
 						<div className="absolute bottom-0 left-0 top-12 h-fit w-full bg-white px-2 py-3 shadow lg:px-6 lg:py-6">

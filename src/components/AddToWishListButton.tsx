@@ -25,7 +25,7 @@ export const AddtoWishListButton = ({
 			}}
 		>
 			<button type="submit">
-				<Heart className={`${isFavorite && "fill-blue-600"}`} />
+				<Heart className={`${isFavorite && "fill-blue-600"}  transition hover:fill-blue-600/20`} />
 			</button>
 		</div>
 	);
